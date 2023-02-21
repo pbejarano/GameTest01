@@ -1,0 +1,81 @@
+hr {
+	margin: 3px;
+}
+
+.listPreguntas{
+	margin: 30px auto 0px auto;
+	max-width: 200px;
+}
+
+.btn-position{
+	max-width: 750px;
+	margin: auto;
+}
+
+.btn-list-modal{
+	margin-bottom: 5px;
+}
+
+.familias{
+	text-align: center;
+}
+
+.tabla-respuestas{
+	margin: auto;
+	text-align: center;
+	max-width: 500px;
+	border-radius: 10px;
+	border: 2px solid black;
+	/*border-style: dotted;*/
+	background-color: #FCFF88;
+}
+
+.containerRegister{
+	position: relative;
+	margin-top: 20px;
+	padding: 20px;
+	text-align: center;
+}
+
+.button{
+	border: 0px;
+	background-color: #fff;
+}
+
+.card-body {
+    padding: 5px;
+}
+
+.card {
+	--bs-card-border-color: none;
+	background-color: #C2ECAC;
+}
+
+.cont{
+	position: relative;
+	min-width: 505px;
+	align-items: center;
+}
+
+.textoPregunta{
+	position: absolute;
+    width: 333px;
+    text-align: center;
+    font-style: italic;
+}
+
+.col-2{
+	padding: 0px;
+	display: flex;
+    justify-content: center;
+}
+
+.col-10{
+	padding: 0px;
+}
+
+.btn-primary{
+	--bs-btn-color: #000000;
+	--bs-btn-bg: none;
+	--bs-btn-border-color: none;
+}
