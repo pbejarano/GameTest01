@@ -992,13 +992,6 @@ function clic(){
 	console.log(familiaUno);
 	console.log(familiaDos);
 
-
-//¿COMO HAGO PARA EL CHECK?
-	preguntasVisibles = document.getElementById("flexSwitchCheckChecked").value;
-
-	console.log(preguntasVisibles);
-
-
 var print = '<br><p>Configuracion</p><div class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefaultPuntosX2"><label class="form-check-label" for="flexSwitchCheckDefaultPuntosX2">Puntos x2</label></div><hr><div class="listPreguntas"><h4>Lista de preguntas</h4></div><br><p>Cantidad de preguntas: '+cantidadPreguntas+'</p><br>';
 
 for (var i = 0; i < cantidadPreguntas; i++) {
