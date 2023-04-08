@@ -933,6 +933,10 @@ const preguntas = [
 var familiaUno = "Familia Bosho";
 var familiaDos = "Dinosaurio";
 
+
+
+
+
 //Puntuaciones Familias.
 var puntuacionPorRonda = 0;
 var puntuacionFamUno = 0;
@@ -944,109 +948,13 @@ var textoRonda = "puntuacionPorRonda";
 
 const cantidadPreguntas = preguntas.length;
 
-var print = '<div class="listPreguntas"><h4>Lista de preguntas</h4></div><br><p>Cantidad de preguntas: '+cantidadPreguntas+'</p>';
+function capturarApellidos(){
+	familiaUno = document.getElementById("familiaUno").value;
+	familiaDos = document.getElementById("familiaDos").value;
 
-for (var i = 0; i < cantidadPreguntas; i++) {
-
-		//Botones
-		print += '<div class="btn-list-modal" data-bs-toggle="modal" data-bs-target="#exampleModal'+i+'">';
-		print += '<ul class="list-group">';
-		print += '<li class="list-group-item">';
-		print += '<input class="form-check-input me-1" type="checkbox" value="" id="firstCheckboxStretched'+i+'">';
-		print += '<label class="form-check-label stretched-link" for="firstCheckboxStretched'+i+'"> '+i+': '+preguntas[i].titulo+'</label>';
-		print += '</li>';
-		print += '</ul>';
-		print += '</div>';
-
-		//Contenedor Modal
-		print += '<div class="modal fade" id="exampleModal'+i+'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">';
-		print += '<div class="modal-dialog modal-fullscreen">';
-		print += '<div class="modal-content">';
-		print += '<div class="modal-header">';
-		print += '<h1 class="modal-title fs-5" id="exampleModalLabel">'+preguntas[i].titulo+'</h1>';
-		print += '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>';
-		print += '</div>';
-		print += '<div class="modal-body">';
-
-
-		//Contenido Modal ------------------------
-		print += '<div class="container-panel">';
-		print += '<div class="row familias">';
-		print += '<div class="col"><h2>'+familiaUno+'</h2><br><h2><div id="puntuacionFamUno'+i+'">0</div></h2>';
-		print += '<hr><br><button class="button" onclick="incrementarFamUno()"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-trophy" viewBox="0 0 16 16"><path d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5c0 .538-.012 1.05-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33.076 33.076 0 0 1 2.5.5zm.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935zm10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935zM3.504 1c.007.517.026 1.006.056 1.469.13 2.028.457 3.546.87 4.667C5.294 9.48 6.484 10 7 10a.5.5 0 0 1 .5.5v2.61a1 1 0 0 1-.757.97l-1.426.356a.5.5 0 0 0-.179.085L4.5 15h7l-.638-.479a.501.501 0 0 0-.18-.085l-1.425-.356a1 1 0 0 1-.757-.97V10.5A.5.5 0 0 1 9 10c.516 0 1.706-.52 2.57-2.864.413-1.12.74-2.64.87-4.667.03-.463.049-.952.056-1.469H3.504z"/></svg></button><br><br>';
-		print += '</div>'
-		print += '<div class="col"><h5>Puntuacion ronda</h5><br><h1><div id="puntuacionPorRonda'+i+'">0</div></h1></div>';
-		print += '<div class="col"><h2>'+familiaDos+'</h2><br><h2><div id="puntuacionFamDos'+i+'">0</div></h2>';
-		print += '<hr><br><button class="button" onclick="incrementarFamDos()"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-trophy" viewBox="0 0 16 16"><path d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5c0 .538-.012 1.05-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33.076 33.076 0 0 1 2.5.5zm.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935zm10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935zM3.504 1c.007.517.026 1.006.056 1.469.13 2.028.457 3.546.87 4.667C5.294 9.48 6.484 10 7 10a.5.5 0 0 1 .5.5v2.61a1 1 0 0 1-.757.97l-1.426.356a.5.5 0 0 0-.179.085L4.5 15h7l-.638-.479a.501.501 0 0 0-.18-.085l-1.425-.356a1 1 0 0 1-.757-.97V10.5A.5.5 0 0 1 9 10c.516 0 1.706-.52 2.57-2.864.413-1.12.74-2.64.87-4.667.03-.463.049-.952.056-1.469H3.504z"/></svg></button><br><br>';
-		print += '</div>'
-		print += '</div><hr><br>';
-		print += '<div class="tabla-respuestas">';
-		print += '<h2>RESPUESTAS</H2>';
-		print += '<hr>';
-
-		//pizarra Respuesta 1
-		print += '<div class="row cont"><div class="col-2"><button class="btn btn-primary" onclick="funcionesA'+i+'()" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample'+i+"pregA"+'" aria-expanded="false" aria-controls="collapseWidthExample"><!--ICON EYE--><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16"><path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/><path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/></svg><!--ICON EYE--></button></div>';
-		print += '<div class="col-10"><div class="textoPregunta">Respuesta 1.</div><div style="min-height: 22.6px;">';
-		print += '<div class="collapse collapse-horizontal" id="collapseWidthExample'+i+"pregA"+'">';
-		print += '<div class="card card-body" style="width: 400px; text-align: center;"><div class="row">';
-		print += '<div class="col-5">'+preguntas[i].respuestas[0].respuestaUno+'</div><div class="col-2">-----></div><div class="col-5">'+preguntas[i].respuestas[0].puntuacionUno+'</div>';
-		print += '</div></div></div></div></div></div><hr>';
-
-	
-
-		//pizarra Respuesta 2
-		print += '<div class="row cont"><div class="col-2"><button class="btn btn-primary" onclick="funcionesB'+i+'()" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample'+i+"pregB"+'" aria-expanded="false" aria-controls="collapseWidthExample"><!--ICON EYE--><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16"><path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/><path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/></svg><!--ICON EYE--></button></div>';
-		print += '<div class="col-10"><div class="textoPregunta">Respuesta 2.</div><div style="min-height: 22.6px;">';
-		print += '<div class="collapse collapse-horizontal" id="collapseWidthExample'+i+"pregB"+'">';
-		print += '<div class="card card-body" style="width: 400px; text-align: center;"><div class="row">';
-		print += '<div class="col-5">'+preguntas[i].respuestas[1].respuestaDos+'</div><div class="col-2">-----></div><div class="col-5">'+preguntas[i].respuestas[1].puntuacionDos+'</div>';
-		print += '</div></div></div></div></div></div><hr>';
-
-		
-
-		//pizarra Respuesta 3
-		print += '<div class="row cont"><div class="col-2"><button class="btn btn-primary" onclick="funcionesC'+i+'()" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample'+i+"pregC"+'" aria-expanded="false" aria-controls="collapseWidthExample"><!--ICON EYE--><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16"><path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/><path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/></svg><!--ICON EYE--></button></div>';
-		print += '<div class="col-10"><div class="textoPregunta">Respuesta 3.</div><div style="min-height: 22.6px;">';
-		print += '<div class="collapse collapse-horizontal" id="collapseWidthExample'+i+"pregC"+'">';
-		print += '<div class="card card-body" style="width: 400px; text-align: center;"><div class="row">';
-		print += '<div class="col-5">'+preguntas[i].respuestas[2].respuestaTres+'</div><div class="col-2">-----></div><div class="col-5">'+preguntas[i].respuestas[2].puntuacionTres+'</div>';
-		print += '</div></div></div></div></div></div><hr>';
-
-		
-
-		//pizarra Respuesta 4
-		print += '<div class="row cont"><div class="col-2"><button class="btn btn-primary" onclick="funcionesD'+i+'()" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample'+i+"pregD"+'" aria-expanded="false" aria-controls="collapseWidthExample"><!--ICON EYE--><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16"><path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/><path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/></svg><!--ICON EYE--></button></div>';
-		print += '<div class="col-10"><div class="textoPregunta">Respuesta 4.</div><div style="min-height: 22.6px;">';
-		print += '<div class="collapse collapse-horizontal" id="collapseWidthExample'+i+"pregD"+'">';
-		print += '<div class="card card-body" style="width: 400px; text-align: center;"><div class="row">';
-		print += '<div class="col-5">'+preguntas[i].respuestas[3].respuestaCuatro+'</div><div class="col-2">-----></div><div class="col-5">'+preguntas[i].respuestas[3].puntuacionCuatro+'</div>';
-		print += '</div></div></div></div></div></div><hr>';
-
-		
-
-		//pizarra Respuesta 5
-		print += '<div class="row cont"><div class="col-2"><button class="btn btn-primary" onclick="funcionesE'+i+'()" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample'+i+"pregE"+'" aria-expanded="false" aria-controls="collapseWidthExample"><!--ICON EYE--><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16"><path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/><path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/></svg><!--ICON EYE--></button></div>';
-		print += '<div class="col-10"><div class="textoPregunta">Respuesta 5.</div><div style="min-height: 22.6px;">';
-		print += '<div class="collapse collapse-horizontal" id="collapseWidthExample'+i+"pregE"+'">';
-		print += '<div class="card card-body" style="width: 400px; text-align: center;"><div class="row">';
-		print += '<div class="col-5">'+preguntas[i].respuestas[4].respuestaCinco+'</div><div class="col-2">-----></div><div class="col-5">'+preguntas[i].respuestas[4].puntuacionCinco+'</div>';
-		print += '</div></div></div></div></div></div>';
-
-		
-
-		print += '</div>';
-		print += '...';
-		//Contenido Modal ------------------------
-
-		print += '</div>';
-		print += '</div>';
-		print += '</div>';
-		print += '</div>';
-		print += '</div>';
-
+	console.log(familiaUno);
+	console.log(familiaDos);
 }
-
-	var vista = '<div class="listPreguntas"><h4>Lista de preguntas</h4></div><br><p>Cantidad de preguntas: '+cantidadPreguntas+'</p>';
 
 
 function respuestas(){
@@ -1104,8 +1012,123 @@ console.log(x+"pregE");
 
 function clic(){
 
-	familiaUno = document.getElementById("familiaUno").value;
-	familiaDos = document.getElementById("familiaDos").value
+
+var print = '<div class="listPreguntas"><h4>Lista de preguntas</h4></div><br><p>Cantidad de preguntas: '+cantidadPreguntas+'</p>';
+
+for (var i = 0; i < cantidadPreguntas; i++) {
+
+		//Botones
+		print += '<div class="btn-list-modal" data-bs-toggle="modal" data-bs-target="#exampleModal'+i+'">';
+		print += '<ul class="list-group">';
+		print += '<li class="list-group-item">';
+		print += '<input class="form-check-input me-1" type="checkbox" value="" id="firstCheckboxStretched'+i+'">';
+		print += '<label class="form-check-label stretched-link" for="firstCheckboxStretched'+i+'"> '+i+': '+preguntas[i].titulo+'</label>';
+		print += '</li>';
+		print += '</ul>';
+		print += '</div>';
+
+		//Contenedor Modal
+		print += '<div class="modal fade" id="exampleModal'+i+'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">';
+		print += '<div class="modal-dialog modal-fullscreen">';
+		print += '<div class="modal-content">';
+		print += '<div class="modal-header">';
+		print += '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>';
+		print += '</div>';
+		print += '<h1 class="modal-title fs-5" id="exampleModalLabel">'+preguntas[i].titulo+'</h1><hr>';
+		print += '<div class="modal-body">';
+
+
+		//Contenido Modal ------------------------
+		print += '<div class="container-panel">';
+		print += '<div class="row familias">';
+		print += '<div class="col familiasCol"><h2>'+familiaUno+'</h2><br><h2><div id="puntuacionFamUno'+i+'">0</div></h2>';
+		print += '<hr><br><button class="button" onclick="incrementarFamUno()"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-trophy" viewBox="0 0 16 16"><path d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5c0 .538-.012 1.05-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33.076 33.076 0 0 1 2.5.5zm.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935zm10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935zM3.504 1c.007.517.026 1.006.056 1.469.13 2.028.457 3.546.87 4.667C5.294 9.48 6.484 10 7 10a.5.5 0 0 1 .5.5v2.61a1 1 0 0 1-.757.97l-1.426.356a.5.5 0 0 0-.179.085L4.5 15h7l-.638-.479a.501.501 0 0 0-.18-.085l-1.425-.356a1 1 0 0 1-.757-.97V10.5A.5.5 0 0 1 9 10c.516 0 1.706-.52 2.57-2.864.413-1.12.74-2.64.87-4.667.03-.463.049-.952.056-1.469H3.504z"/></svg></button><br><br>';
+		print += '</div>'
+		print += '<div class="col"><h5>Puntuacion ronda</h5><br><h1><div id="puntuacionPorRonda'+i+'">0</div></h1></div>';
+		print += '<div class="col familiasCol"><h2>'+familiaDos+'</h2><br><h2><div id="puntuacionFamDos'+i+'">0</div></h2>';
+		print += '<hr><br><button class="button" onclick="incrementarFamDos()"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-trophy" viewBox="0 0 16 16"><path d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5c0 .538-.012 1.05-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33.076 33.076 0 0 1 2.5.5zm.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935zm10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935zM3.504 1c.007.517.026 1.006.056 1.469.13 2.028.457 3.546.87 4.667C5.294 9.48 6.484 10 7 10a.5.5 0 0 1 .5.5v2.61a1 1 0 0 1-.757.97l-1.426.356a.5.5 0 0 0-.179.085L4.5 15h7l-.638-.479a.501.501 0 0 0-.18-.085l-1.425-.356a1 1 0 0 1-.757-.97V10.5A.5.5 0 0 1 9 10c.516 0 1.706-.52 2.57-2.864.413-1.12.74-2.64.87-4.667.03-.463.049-.952.056-1.469H3.504z"/></svg></button><br><br>';
+		print += '</div>'
+		print += '</div><br>';
+		print += '<div class="tabla-respuestas">';
+		print += '<h2>RESPUESTAS</H2>';
+		print += '<hr>';
+
+		//pizarra Respuesta 1
+
+		
+		print += '<div class="row cont">'
+		print += '<div class="col-2"><button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample'+i+"pregA"+'" aria-expanded="false" aria-controls="collapseWidthExample"><!--ICON EYE--><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16"><path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/><path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/></svg><!--ICON EYE--></button></div>'
+		print += '<div class="col-2"><button class="btn btn-primary" onclick="funcionesA'+i+'()" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample'+i+"pregA"+'" aria-expanded="false" aria-controls="collapseWidthExample"><!--ICON EYE--><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trophy" viewBox="0 0 16 16"><path d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5c0 .538-.012 1.05-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33.076 33.076 0 0 1 2.5.5zm.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935zm10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935zM3.504 1c.007.517.026 1.006.056 1.469.13 2.028.457 3.546.87 4.667C5.294 9.48 6.484 10 7 10a.5.5 0 0 1 .5.5v2.61a1 1 0 0 1-.757.97l-1.426.356a.5.5 0 0 0-.179.085L4.5 15h7l-.638-.479a.501.501 0 0 0-.18-.085l-1.425-.356a1 1 0 0 1-.757-.97V10.5A.5.5 0 0 1 9 10c.516 0 1.706-.52 2.57-2.864.413-1.12.74-2.64.87-4.667.03-.463.049-.952.056-1.469H3.504z"/></svg><!--ICON EYE--></button></div>';
+		print += '<div class="col-8"><div class="textoPregunta">Respuesta 1.</div><div style="min-height: 22.6px;">';
+		print += '<div class="collapse collapse-horizontal" id="collapseWidthExample'+i+"pregA"+'">';
+		print += '<div class="card card-body" style="width: 400px; text-align: center;"><div class="row">';
+		print += '<div class="col-5">'+preguntas[i].respuestas[0].respuestaUno+'</div><div class="col-2">---></div><div class="col-5">'+preguntas[i].respuestas[0].puntuacionUno+'</div>';
+		print += '</div></div></div></div></div></div><hr>';
+
+	
+
+		//pizarra Respuesta 2
+		print += '<div class="row cont">'
+		print += '<div class="col-2"><button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample'+i+"pregB"+'" aria-expanded="false" aria-controls="collapseWidthExample"><!--ICON EYE--><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16"><path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/><path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/></svg><!--ICON EYE--></button></div>'
+		print += '<div class="col-2"><button class="btn btn-primary" onclick="funcionesB'+i+'()" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample'+i+"pregB"+'" aria-expanded="false" aria-controls="collapseWidthExample"><!--ICON EYE--><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trophy" viewBox="0 0 16 16"><path d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5c0 .538-.012 1.05-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33.076 33.076 0 0 1 2.5.5zm.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935zm10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935zM3.504 1c.007.517.026 1.006.056 1.469.13 2.028.457 3.546.87 4.667C5.294 9.48 6.484 10 7 10a.5.5 0 0 1 .5.5v2.61a1 1 0 0 1-.757.97l-1.426.356a.5.5 0 0 0-.179.085L4.5 15h7l-.638-.479a.501.501 0 0 0-.18-.085l-1.425-.356a1 1 0 0 1-.757-.97V10.5A.5.5 0 0 1 9 10c.516 0 1.706-.52 2.57-2.864.413-1.12.74-2.64.87-4.667.03-.463.049-.952.056-1.469H3.504z"/></svg><!--ICON EYE--></button></div>';
+		print += '<div class="col-8"><div class="textoPregunta">Respuesta 2.</div><div style="min-height: 22.6px;">';
+		print += '<div class="collapse collapse-horizontal" id="collapseWidthExample'+i+"pregB"+'">';
+		print += '<div class="card card-body" style="width: 400px; text-align: center;"><div class="row">';
+		print += '<div class="col-5">'+preguntas[i].respuestas[1].respuestaDos+'</div><div class="col-2">---></div><div class="col-5">'+preguntas[i].respuestas[1].puntuacionDos+'</div>';
+		print += '</div></div></div></div></div></div><hr>';
+
+		
+
+		//pizarra Respuesta 3
+		print += '<div class="row cont">'
+		print += '<div class="col-2"><button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample'+i+"pregC"+'" aria-expanded="false" aria-controls="collapseWidthExample"><!--ICON EYE--><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16"><path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/><path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/></svg><!--ICON EYE--></button></div>'
+		print += '<div class="col-2"><button class="btn btn-primary" onclick="funcionesC'+i+'()" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample'+i+"pregC"+'" aria-expanded="false" aria-controls="collapseWidthExample"><!--ICON EYE--><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trophy" viewBox="0 0 16 16"><path d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5c0 .538-.012 1.05-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33.076 33.076 0 0 1 2.5.5zm.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935zm10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935zM3.504 1c.007.517.026 1.006.056 1.469.13 2.028.457 3.546.87 4.667C5.294 9.48 6.484 10 7 10a.5.5 0 0 1 .5.5v2.61a1 1 0 0 1-.757.97l-1.426.356a.5.5 0 0 0-.179.085L4.5 15h7l-.638-.479a.501.501 0 0 0-.18-.085l-1.425-.356a1 1 0 0 1-.757-.97V10.5A.5.5 0 0 1 9 10c.516 0 1.706-.52 2.57-2.864.413-1.12.74-2.64.87-4.667.03-.463.049-.952.056-1.469H3.504z"/></svg><!--ICON EYE--></button></div>';
+		print += '<div class="col-8"><div class="textoPregunta">Respuesta 3.</div><div style="min-height: 22.6px;">';
+		print += '<div class="collapse collapse-horizontal" id="collapseWidthExample'+i+"pregC"+'">';
+		print += '<div class="card card-body" style="width: 400px; text-align: center;"><div class="row">';
+		print += '<div class="col-5">'+preguntas[i].respuestas[2].respuestaTres+'</div><div class="col-2">---></div><div class="col-5">'+preguntas[i].respuestas[2].puntuacionTres+'</div>';
+		print += '</div></div></div></div></div></div><hr>';
+
+		
+
+		//pizarra Respuesta 4
+		print += '<div class="row cont">'
+		print += '<div class="col-2"><button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample'+i+"pregD"+'" aria-expanded="false" aria-controls="collapseWidthExample"><!--ICON EYE--><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16"><path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/><path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/></svg><!--ICON EYE--></button></div>'
+		print += '<div class="col-2"><button class="btn btn-primary" onclick="funcionesD'+i+'()" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample'+i+"pregD"+'" aria-expanded="false" aria-controls="collapseWidthExample"><!--ICON EYE--><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trophy" viewBox="0 0 16 16"><path d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5c0 .538-.012 1.05-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33.076 33.076 0 0 1 2.5.5zm.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935zm10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935zM3.504 1c.007.517.026 1.006.056 1.469.13 2.028.457 3.546.87 4.667C5.294 9.48 6.484 10 7 10a.5.5 0 0 1 .5.5v2.61a1 1 0 0 1-.757.97l-1.426.356a.5.5 0 0 0-.179.085L4.5 15h7l-.638-.479a.501.501 0 0 0-.18-.085l-1.425-.356a1 1 0 0 1-.757-.97V10.5A.5.5 0 0 1 9 10c.516 0 1.706-.52 2.57-2.864.413-1.12.74-2.64.87-4.667.03-.463.049-.952.056-1.469H3.504z"/></svg><!--ICON EYE--></button></div>';
+		print += '<div class="col-8"><div class="textoPregunta">Respuesta 4.</div><div style="min-height: 22.6px;">';
+		print += '<div class="collapse collapse-horizontal" id="collapseWidthExample'+i+"pregD"+'">';
+		print += '<div class="card card-body" style="width: 400px; text-align: center;"><div class="row">';
+		print += '<div class="col-5">'+preguntas[i].respuestas[3].respuestaCuatro+'</div><div class="col-2">---></div><div class="col-5">'+preguntas[i].respuestas[3].puntuacionCuatro+'</div>';
+		print += '</div></div></div></div></div></div><hr>';
+
+		
+
+		//pizarra Respuesta 5
+		print += '<div class="row cont">'
+		print += '<div class="col-2"><button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample'+i+"pregE"+'" aria-expanded="false" aria-controls="collapseWidthExample"><!--ICON EYE--><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16"><path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/><path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/></svg><!--ICON EYE--></button></div>'
+		print += '<div class="col-2"><button class="btn btn-primary" onclick="funcionesE'+i+'()" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample'+i+"pregE"+'" aria-expanded="false" aria-controls="collapseWidthExample"><!--ICON EYE--><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trophy" viewBox="0 0 16 16"><path d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5c0 .538-.012 1.05-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33.076 33.076 0 0 1 2.5.5zm.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935zm10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935zM3.504 1c.007.517.026 1.006.056 1.469.13 2.028.457 3.546.87 4.667C5.294 9.48 6.484 10 7 10a.5.5 0 0 1 .5.5v2.61a1 1 0 0 1-.757.97l-1.426.356a.5.5 0 0 0-.179.085L4.5 15h7l-.638-.479a.501.501 0 0 0-.18-.085l-1.425-.356a1 1 0 0 1-.757-.97V10.5A.5.5 0 0 1 9 10c.516 0 1.706-.52 2.57-2.864.413-1.12.74-2.64.87-4.667.03-.463.049-.952.056-1.469H3.504z"/></svg><!--ICON EYE--></button></div>';
+		print += '<div class="col-8"><div class="textoPregunta">Respuesta 5.</div><div style="min-height: 22.6px;">';
+		print += '<div class="collapse collapse-horizontal" id="collapseWidthExample'+i+"pregE"+'">';
+		print += '<div class="card card-body" style="width: 400px; text-align: center;"><div class="row">';
+		print += '<div class="col-5">'+preguntas[i].respuestas[4].respuestaCinco+'</div><div class="col-2">---></div><div class="col-5">'+preguntas[i].respuestas[4].puntuacionCinco+'</div>';
+		print += '</div></div></div></div></div></div>';
+
+		
+
+		print += '</div>';
+		print += '...';
+		//Contenido Modal ------------------------
+
+		print += '</div>';
+		print += '</div>';
+		print += '</div>';
+		print += '</div>';
+		print += '</div>';
+
+}
+
+	var vista = '<div class="listPreguntas"><h4>Lista de preguntas</h4></div><br><p>Cantidad de preguntas: '+cantidadPreguntas+'</p>';
+
 
 
 	//Imprime lista de preguntas en el Dom.

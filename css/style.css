@@ -16,6 +16,23 @@ hr {
 	margin-bottom: 5px;
 }
 
+.row{
+	margin-right: 0;
+    margin-left: 0;
+}
+
+.modal-title {
+	margin-left: auto;
+	margin-right: auto;
+    margin-bottom: 0;
+    padding-bottom: 15px;
+    line-height: var(--bs-modal-title-line-height);
+}
+
+.familiasCol{
+	padding-top: 30px;
+}
+
 .familias{
 	text-align: center;
 }
@@ -23,7 +40,7 @@ hr {
 .tabla-respuestas{
 	margin: auto;
 	text-align: center;
-	max-width: 500px;
+	max-width: 550px;
 	border-radius: 10px;
 	border: 2px solid black;
 	/*border-style: dotted;*/
@@ -44,11 +61,19 @@ hr {
 
 .card-body {
     padding: 5px;
+
 }
 
 .card {
 	--bs-card-border-color: none;
 	background-color: #C2ECAC;
+	width: 440px !important;
+}
+
+.btn:hover {
+    color: var(--bs-btn-hover-color);
+    background-color: #61DA2F;
+    border-color: var(--bs-btn-hover-border-color);
 }
 
 .cont{
@@ -67,11 +92,16 @@ hr {
 .col-2{
 	padding: 0px;
 	display: flex;
+	width: 7.666667%;
     justify-content: center;
 }
 
 .col-10{
 	padding: 0px;
+}
+
+.modal-header {
+	border-bottom:none;
 }
 
 .btn-primary{
