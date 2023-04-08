@@ -932,6 +932,7 @@ const preguntas = [
 
 var familiaUno = "Familia Bosho";
 var familiaDos = "Dinosaurio";
+var preguntasVisibles = true;
 
 
 
@@ -948,63 +949,36 @@ var textoRonda = "puntuacionPorRonda";
 
 const cantidadPreguntas = preguntas.length;
 
-function capturarApellidos(){
-	familiaUno = document.getElementById("familiaUno").value;
-	familiaDos = document.getElementById("familiaDos").value;
-
-	console.log(familiaUno);
-	console.log(familiaDos);
-}
-
-
 function respuestas(){
 
+var vista = '<div class="listPreguntas"><h4>Lista de preguntas</h4></div><br><p>Cantidad de preguntas: '+cantidadPreguntas+'</p>';
 	
 for (var x = 0; x < cantidadPreguntas; x++) {
 
-		vista += '<div> Pregunta '+x+'</div>'
-		vista += '<div class="card card-body" style="width: 400px; text-align: center;"><div class="row">';
-		vista += '<div class="col-5">'+preguntas[x].respuestas[0].respuestaUno+'</div><div class="col-2">-----></div><div class="col-5">'+preguntas[x].respuestas[0].puntuacionUno+'</div>';
+		vista += '<div> Pregunta '+x+'</div>';
+		vista += '<div class="card card-body" style=" text-align: center;"><div class="row">';
+		vista += '<div class="col-5">'+preguntas[x].respuestas[0].respuestaUno+'</div><div class="col-2">---></div><div class="col-5">'+preguntas[x].respuestas[0].puntuacionUno+'</div>';
 		vista += '</div></div><hr>';
-
-		console.log(x+"pregA");
-
-	
 
 		//pizarra Respuesta 2
-		vista += '<div class="card card-body" style="width: 400px; text-align: center;"><div class="row">';
-		vista += '<div class="col-5">'+preguntas[x].respuestas[1].respuestaDos+'</div><div class="col-2">-----></div><div class="col-5">'+preguntas[x].respuestas[1].puntuacionDos+'</div>';
+		vista += '<div class="card card-body" style=" text-align: center;"><div class="row">';
+		vista += '<div class="col-5">'+preguntas[x].respuestas[1].respuestaDos+'</div><div class="col-2">---></div><div class="col-5">'+preguntas[x].respuestas[1].puntuacionDos+'</div>';
 		vista += '</div></div><hr>';
-
-console.log(x+"pregB");
-
-		
 
 		//pizarra Respuesta 3
-		vista += '<div class="card card-body" style="width: 400px; text-align: center;"><div class="row">';
-		vista += '<div class="col-5">'+preguntas[x].respuestas[2].respuestaTres+'</div><div class="col-2">-----></div><div class="col-5">'+preguntas[x].respuestas[2].puntuacionTres+'</div>';
+		vista += '<div class="card card-body" style=" text-align: center;"><div class="row">';
+		vista += '<div class="col-5">'+preguntas[x].respuestas[2].respuestaTres+'</div><div class="col-2">---></div><div class="col-5">'+preguntas[x].respuestas[2].puntuacionTres+'</div>';
 		vista += '</div></div><hr>';
-
-		
-console.log(x+"pregC");
 
 		//pizarra Respuesta 4
-		vista += '<div class="card card-body" style="width: 400px; text-align: center;"><div class="row">';
-		vista += '<div class="col-5">'+preguntas[x].respuestas[3].respuestaCuatro+'</div><div class="col-2">-----></div><div class="col-5">'+preguntas[x].respuestas[3].puntuacionCuatro+'</div>';
+		vista += '<div class="card card-body" style=" text-align: center;"><div class="row">';
+		vista += '<div class="col-5">'+preguntas[x].respuestas[3].respuestaCuatro+'</div><div class="col-2">---></div><div class="col-5">'+preguntas[x].respuestas[3].puntuacionCuatro+'</div>';
 		vista += '</div></div><hr>';
 
-		console.log(x+"pregD");
-
-
 		//pizarra Respuesta 5
-		vista += '<div class="card card-body" style="width: 400px; text-align: center;"><div class="row">';
-		vista += '<div class="col-5">'+preguntas[x].respuestas[4].respuestaCinco+'</div><div class="col-2">-----></div><div class="col-5">'+preguntas[x].respuestas[4].puntuacionCinco+'</div>';
+		vista += '<div class="card card-body" style=" text-align: center;"><div class="row">';
+		vista += '<div class="col-5">'+preguntas[x].respuestas[4].respuestaCinco+'</div><div class="col-2">---></div><div class="col-5">'+preguntas[x].respuestas[4].puntuacionCinco+'</div>';
 		vista += '</div></div></div><hr>';
-console.log(x+"pregE");
-
-	
-
-
 	}
 
 	document.getElementById('list-btn-vista-respuesta').innerHTML = vista;
@@ -1012,8 +986,20 @@ console.log(x+"pregE");
 
 function clic(){
 
+	familiaUno = document.getElementById("familiaUno").value;
+	familiaDos = document.getElementById("familiaDos").value;
 
-var print = '<div class="listPreguntas"><h4>Lista de preguntas</h4></div><br><p>Cantidad de preguntas: '+cantidadPreguntas+'</p>';
+	console.log(familiaUno);
+	console.log(familiaDos);
+
+
+//¿COMO HAGO PARA EL CHECK?
+	preguntasVisibles = document.getElementById("flexSwitchCheckChecked").value;
+
+	console.log(preguntasVisibles);
+
+
+var print = '<br><p>Configuracion</p><div class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefaultPuntosX2"><label class="form-check-label" for="flexSwitchCheckDefaultPuntosX2">Puntos x2</label></div><hr><div class="listPreguntas"><h4>Lista de preguntas</h4></div><br><p>Cantidad de preguntas: '+cantidadPreguntas+'</p><br>';
 
 for (var i = 0; i < cantidadPreguntas; i++) {
 
@@ -1022,7 +1008,13 @@ for (var i = 0; i < cantidadPreguntas; i++) {
 		print += '<ul class="list-group">';
 		print += '<li class="list-group-item">';
 		print += '<input class="form-check-input me-1" type="checkbox" value="" id="firstCheckboxStretched'+i+'">';
-		print += '<label class="form-check-label stretched-link" for="firstCheckboxStretched'+i+'"> '+i+': '+preguntas[i].titulo+'</label>';
+		
+
+		if (preguntasVisibles == true){
+			print += '<label class="form-check-label stretched-link" for="firstCheckboxStretched'+i+'"> '+i+': '+preguntas[i].titulo+'</label>';
+		}else
+		print += '<label class="form-check-label stretched-link" for="firstCheckboxStretched'+i+'"> <b>'+i+':.</b> <i>...Preguntas Desactivadas...</i> </label>';
+
 		print += '</li>';
 		print += '</ul>';
 		print += '</div>';
@@ -1126,10 +1118,6 @@ for (var i = 0; i < cantidadPreguntas; i++) {
 		print += '</div>';
 
 }
-
-	var vista = '<div class="listPreguntas"><h4>Lista de preguntas</h4></div><br><p>Cantidad de preguntas: '+cantidadPreguntas+'</p>';
-
-
 
 	//Imprime lista de preguntas en el Dom.
 	document.getElementById('list-btn-modal').innerHTML = print;

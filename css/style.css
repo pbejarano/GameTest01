@@ -67,7 +67,7 @@ hr {
 .card {
 	--bs-card-border-color: none;
 	background-color: #C2ECAC;
-	width: 440px !important;
+	width: 440px;
 }
 
 .btn:hover {
@@ -84,7 +84,7 @@ hr {
 
 .textoPregunta{
 	position: absolute;
-    width: 333px;
+    width: 445px;
     text-align: center;
     font-style: italic;
 }
@@ -92,12 +92,26 @@ hr {
 .col-2{
 	padding: 0px;
 	display: flex;
-	width: 7.666667%;
+	width: 40px;
     justify-content: center;
 }
 
 .col-10{
 	padding: 0px;
+}
+
+.col-8{
+	width: 466px;
+
+}
+
+.col-5{
+	width: 194px;
+}
+
+.checkMain{
+	margin: auto;
+	width: 200px;
 }
 
 .modal-header {
