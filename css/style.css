@@ -123,3 +123,8 @@ hr {
 	--bs-btn-bg: none;
 	--bs-btn-border-color: none;
 }
+
+.form-check{
+	max-width: 170px;
+	margin: auto;
+}
