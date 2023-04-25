@@ -936,8 +936,8 @@ var familiaDos = "Dinosaurio";
 //preguntas visibles
 var preguntasVisibles = true;
 
-//puntos x2
-var puntosX2 = false;
+//puntos normales, x2 o x3
+var puntosMult = 0;
 
 
 
@@ -989,24 +989,33 @@ for (var x = 0; x < cantidadPreguntas; x++) {
 	document.getElementById('list-btn-vista-respuesta').innerHTML = vista;
 }
 
+//Visibilidad de preguntas.
 function mostrarPreguntas(){
 	preguntasVisibles = document.getElementById("mostrarPreguntas");
 	preguntasVisibles = preguntasVisibles.checked;
 }
 
-function puntosX2Function(){
-	puntosX2 = document.getElementById("PuntosX2");
-	puntosX2 = puntosX2.checked;
+//Puntos normales
+function puntosMultiplicados0(){
+	puntosMult = document.getElementById("flexRadioDefault0").value;
+}
+//Puntos X2
+function puntosMultiplicados1(){
+	puntosMult = document.getElementById("flexRadioDefault1").value;
+}
+//Puntos X3
+function puntosMultiplicados2(){
+	puntosMult = document.getElementById("flexRadioDefault2").value;
 }
 
 
-function clic(){
+function comenzar(){
 
 	familiaUno = document.getElementById("familiaUno").value;
 	familiaDos = document.getElementById("familiaDos").value;
 
 
-var print = '<br><p>Configuracion</p><div class="form-check form-switch"><input class="form-check-input" onclick="puntosX2Function()" type="checkbox" value="" role="switch" id="PuntosX2"><label class="form-check-label" for="PuntosX2">Puntos x2</label></div><hr><div class="listPreguntas"><h4>Lista de preguntas</h4></div><br><p>Cantidad de preguntas: '+cantidadPreguntas+'</p><br>';
+var print = '<br><p>Configuracion de puntuación:</p><div class="form-check form-check-inline"><input class="form-check-input" onclick="puntosMultiplicados0()" value="0" type="radio" name="flexRadioDefault" id="flexRadioDefault0" checked><label class="form-check-label" for="flexRadioDefault0">Normal</label></div><div class="form-check form-check-inline"><input class="form-check-input" onclick="puntosMultiplicados1()" value="1" type="radio" name="flexRadioDefault" id="flexRadioDefault1"><label class="form-check-label" for="flexRadioDefault1">Puntos X2</label></div><div class="form-check form-check-inline"><input class="form-check-input" onclick="puntosMultiplicados2()" value="2" type="radio" name="flexRadioDefault" id="flexRadioDefault2"><label class="form-check-label" for="flexRadioDefault2">Puntos X3</label></div><hr><div class="listPreguntas"><h4>Lista de preguntas</h4></div><br><p>Cantidad de preguntas: '+cantidadPreguntas+'</p><br>';
 
 for (var i = 0; i < cantidadPreguntas; i++) {
 
@@ -1136,10 +1145,12 @@ const divPuntuacionUno = "puntuacionFamUno";
 const divPuntuacionDos = "puntuacionFamDos";
 
 function incrementarFamUno(){
-	if (puntosX2 == true){
-		puntuacionFamUno = puntuacionFamUno + puntuacionPorRonda * 2;
-	}else{
+	if (puntosMult == 0){
 		puntuacionFamUno = puntuacionFamUno + puntuacionPorRonda;
+	}else if(puntosMult == 1){
+		puntuacionFamUno = puntuacionFamUno + puntuacionPorRonda * 2;
+	}else if(puntosMult == 2){
+		puntuacionFamUno = puntuacionFamUno + puntuacionPorRonda * 3;
 	}
 	puntuacionPorRonda = 0;
 
@@ -1155,10 +1166,12 @@ function incrementarFamUno(){
 }
 
 function incrementarFamDos(){
-	if (puntosX2 == true){
-		puntuacionFamDos = puntuacionFamDos + puntuacionPorRonda * 2;
-	}else{
+	if (puntosMult == 0){
 		puntuacionFamDos = puntuacionFamDos + puntuacionPorRonda;
+	}else if(puntosMult == 1){
+		puntuacionFamDos = puntuacionFamDos + puntuacionPorRonda * 2;
+	}else if(puntosMult == 2){
+		puntuacionFamDos = puntuacionFamDos + puntuacionPorRonda * 3;
 	}
 	puntuacionPorRonda = 0;
 
