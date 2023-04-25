@@ -29,10 +29,6 @@ hr {
     line-height: var(--bs-modal-title-line-height);
 }
 
-.familiasCol{
-	padding-top: 30px;
-}
-
 .familias{
 	text-align: center;
 }
@@ -129,3 +125,17 @@ hr {
 	margin: auto;
 	padding-right: 10px;
 }
+
+.vidas-main{
+	width: 165px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 20px;
+}
+
+.vidas{
+	width: 30px;
+}
+
+
+
