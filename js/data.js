@@ -947,14 +947,17 @@ var puntuacionFamDos = 0;
 var puntuacionUnoR= 0;
 var textoRonda = "puntuacionPorRonda";
 
+puntuacionFamUno
+
 
 //Vidas
 var vidasCambio = '<img src="img/x.png" class="vidas">';
-var conteoVidasA = 0;
-var conteoVidasB = 0;
+var conteoVidas = 0;
 
 
 const cantidadPreguntas = preguntas.length;
+
+//Intefaz donde muestra las respuestas de las preguntas.
 
 function respuestas(){
 
@@ -1011,14 +1014,43 @@ function puntosMultiplicados2(){
 }
 
 function reinicioDeVidas(){
-	conteoVidasA = 0;
-	conteoVidasB = 0;
+	conteoVidas = 0;
 }
 
+//Intefraz IDEX
+
+
+function mainIndex(){
+	var printMainIndex = '<button onclick="preComenzar()">Jugar</button><button onclick="respuestas()">Respuestas</button><button onclick="about()">Acerca de</button>';
+
+	document.getElementById('mainIndex').innerHTML = printMainIndex;
+}
+
+//Interfaz para introducir los nombres de familias.
+function preComenzar(){
+	var printInt = '<div class="btn-position" id="list-btn-modal"><div class="containerRegister"><h3>Ingrese Familias</h3><br><input type="text" name="familiaUno" id="familiaUno" placeholder="Familia Uno"><h1>VS</h1><input type="text" name="familiaDos" id="familiaDos" placeholder="Familia Dos"><br><br><hr><p>Configuracion</p><div class="form-check"><input class="form-check-input" onclick="mostrarPreguntas()" type="checkbox" value="true" id="mostrarPreguntas" checked><label class="form-check-label" for="mostrarPreguntas">Mostrar preguntas</label></div><br><hr><br><button onclick="comenzar()">Comenzar</button></div><hr><br><div id="list-btn-vista-respuesta"><button onclick="respuestas()">Mostrar Respuestas</button></div></div>';
+
+	document.getElementById('mainIndex').innerHTML = printInt;
+}
+
+//Interfaz con respuestas.
+function respuestas(){
+	var printResp = '<h2>Se mostraran las Resputes</h2><br><br><button onclick="mainIndex()">Regresar</button>';
+
+	document.getElementById('mainIndex').innerHTML = printResp;
+}
+
+function about(){
+	var printAbout = '<h2>Se mostrara informacion de creador</h2><br><br><button onclick="mainIndex()">Regresar</button>';
+
+	document.getElementById('mainIndex').innerHTML = printAbout;
+}
+
+
+//Interfaz donde se muestra la lista de preguntas.
 function comenzar(){
 	familiaUno = document.getElementById("familiaUno").value;
 	familiaDos = document.getElementById("familiaDos").value;
-
 
 var print = '<br><p>Configuracion de puntuación:</p><div class="form-check form-check-inline"><input class="form-check-input" onclick="puntosMultiplicados0()" value="0" type="radio" name="flexRadioDefault" id="flexRadioDefault0" checked><label class="form-check-label" for="flexRadioDefault0">Normal</label></div><div class="form-check form-check-inline"><input class="form-check-input" onclick="puntosMultiplicados1()" value="1" type="radio" name="flexRadioDefault" id="flexRadioDefault1"><label class="form-check-label" for="flexRadioDefault1">Puntos X2</label></div><div class="form-check form-check-inline"><input class="form-check-input" onclick="puntosMultiplicados2()" value="2" type="radio" name="flexRadioDefault" id="flexRadioDefault2"><label class="form-check-label" for="flexRadioDefault2">Puntos X3</label></div><hr><div class="listPreguntas"><h4>Lista de preguntas</h4></div><br><p>Cantidad de preguntas: '+cantidadPreguntas+'</p><br>';
 
@@ -1052,17 +1084,19 @@ for (var i = 0; i < cantidadPreguntas; i++) {
 		print += '<div class="modal-body">';
 
 
+					
+
 		//Contenido Modal ------------------------
 		print += '<div class="container-panel">';
 		print += '<div class="row familias">';
-		print += '<div class="col familiasCol"><div class="row vidas-main" onclick="vidasFamUno'+i+'()"><div class="col" id="vida' + i + 'A"><img src="img/corazon.png" class="vidas"></div><div class="col" id="vida' + i + 'B"><img src="img/corazon.png" class="vidas"></div><div class="col" id="vida' + i + 'C"><img src="img/corazon.png" class="vidas"></div></div><h2>'+familiaUno+'</h2><br><h2><div id="puntuacionFamUno'+i+'">0</div></h2>';
+		print += '<div class="col"><h2>'+familiaUno+'</h2><br><h2><div class="familiasCol" id="puntuacionFamUno'+i+'">0</div></h2>';
 		print += '<hr><br><button class="button" onclick="incrementarFamUno()"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-trophy" viewBox="0 0 16 16"><path d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5c0 .538-.012 1.05-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33.076 33.076 0 0 1 2.5.5zm.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935zm10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935zM3.504 1c.007.517.026 1.006.056 1.469.13 2.028.457 3.546.87 4.667C5.294 9.48 6.484 10 7 10a.5.5 0 0 1 .5.5v2.61a1 1 0 0 1-.757.97l-1.426.356a.5.5 0 0 0-.179.085L4.5 15h7l-.638-.479a.501.501 0 0 0-.18-.085l-1.425-.356a1 1 0 0 1-.757-.97V10.5A.5.5 0 0 1 9 10c.516 0 1.706-.52 2.57-2.864.413-1.12.74-2.64.87-4.667.03-.463.049-.952.056-1.469H3.504z"/></svg></button><br><br>';
 		print += '</div>'
-		print += '<div class="col"><h5>Puntuacion ronda</h5><br><h1><div id="puntuacionPorRonda'+i+'">0</div></h1></div>';
-		print += '<div class="col familiasCol"><div class="row vidas-main" onclick="vidasFamDos'+i+'()"><div class="col" id="vida'+i+'D"><img src="img/corazon.png" class="vidas"></div><div class="col" id="vida'+i+'E"><img src="img/corazon.png" class="vidas"></div><div class="col" id="vida'+i+'F"><img src="img/corazon.png" class="vidas"></div></div><h2>'+familiaDos+'</h2><br><h2><div id="puntuacionFamDos'+i+'">0</div></h2>';
+		print += '<div class="col"><br><h5>PUNTUACIÓN POR RONDA</h5><h1><div class="textoPuntuacion" id="puntuacionPorRonda'+i+'">0</div></h1></div>';
+		print += '<div class="col"><h2>'+familiaDos+'</h2><br><h2><div class="familiasCol" id="puntuacionFamDos'+i+'">0</div></h2>';
 		print += '<hr><br><button class="button" onclick="incrementarFamDos()"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-trophy" viewBox="0 0 16 16"><path d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5c0 .538-.012 1.05-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33.076 33.076 0 0 1 2.5.5zm.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935zm10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935zM3.504 1c.007.517.026 1.006.056 1.469.13 2.028.457 3.546.87 4.667C5.294 9.48 6.484 10 7 10a.5.5 0 0 1 .5.5v2.61a1 1 0 0 1-.757.97l-1.426.356a.5.5 0 0 0-.179.085L4.5 15h7l-.638-.479a.501.501 0 0 0-.18-.085l-1.425-.356a1 1 0 0 1-.757-.97V10.5A.5.5 0 0 1 9 10c.516 0 1.706-.52 2.57-2.864.413-1.12.74-2.64.87-4.667.03-.463.049-.952.056-1.469H3.504z"/></svg></button><br><br>';
 		print += '</div>'
-		print += '</div><br>';
+		print += '</div>';
 		print += '<div class="tabla-respuestas">';
 		print += '<h2>RESPUESTAS</H2>';
 		print += '<hr>';
@@ -1130,7 +1164,7 @@ for (var i = 0; i < cantidadPreguntas; i++) {
 		
 
 		print += '</div>';
-		print += '...';
+		print += '<div class="row vidas-main" onclick="vidas'+i+'()"><div class="col" id="vida' + i + 'A"><img src="img/corazon.png" class="vidas"></div><div class="col" id="vida' + i + 'B"><img src="img/corazon.png" class="vidas"></div><div class="col" id="vida' + i + 'C"><img src="img/corazon.png" class="vidas"></div></div>';
 		//Contenido Modal ------------------------
 
 		print += '</div>';
@@ -1253,28 +1287,16 @@ paseE0 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno0(){
-if(conteoVidasA == 0){
+function vidas0(){
+if(conteoVidas == 0){
 document.getElementById("vida0A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida0B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida0C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos0(){
-if(conteoVidasB == 0){
-document.getElementById("vida0D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida0E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida0F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -1339,28 +1361,16 @@ paseE1 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno1(){
-if(conteoVidasA == 0){
+function vidas1(){
+if(conteoVidas == 0){
 document.getElementById("vida1A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida1B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida1C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos1(){
-if(conteoVidasB == 0){
-document.getElementById("vida1D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida1E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida1F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -1425,28 +1435,16 @@ paseE2 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno2(){
-if(conteoVidasA == 0){
+function vidas2(){
+if(conteoVidas == 0){
 document.getElementById("vida2A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida2B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida2C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos2(){
-if(conteoVidasB == 0){
-document.getElementById("vida2D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida2E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida2F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -1511,28 +1509,16 @@ paseE3 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno3(){
-if(conteoVidasA == 0){
+function vidas3(){
+if(conteoVidas == 0){
 document.getElementById("vida3A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida3B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida3C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos3(){
-if(conteoVidasB == 0){
-document.getElementById("vida3D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida3E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida3F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -1597,28 +1583,16 @@ paseE4 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno4(){
-if(conteoVidasA == 0){
+function vidas4(){
+if(conteoVidas == 0){
 document.getElementById("vida4A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida4B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida4C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos4(){
-if(conteoVidasB == 0){
-document.getElementById("vida4D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida4E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida4F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -1683,28 +1657,16 @@ paseE5 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno5(){
-if(conteoVidasA == 0){
+function vidas5(){
+if(conteoVidas == 0){
 document.getElementById("vida5A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida5B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida5C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos5(){
-if(conteoVidasB == 0){
-document.getElementById("vida5D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida5E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida5F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -1769,28 +1731,16 @@ paseE6 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno6(){
-if(conteoVidasA == 0){
+function vidas6(){
+if(conteoVidas == 0){
 document.getElementById("vida6A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida6B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida6C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos6(){
-if(conteoVidasB == 0){
-document.getElementById("vida6D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida6E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida6F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -1855,28 +1805,16 @@ paseE7 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno7(){
-if(conteoVidasA == 0){
+function vidas7(){
+if(conteoVidas == 0){
 document.getElementById("vida7A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida7B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida7C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos7(){
-if(conteoVidasB == 0){
-document.getElementById("vida7D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida7E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida7F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -1941,28 +1879,16 @@ paseE8 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno8(){
-if(conteoVidasA == 0){
+function vidas8(){
+if(conteoVidas == 0){
 document.getElementById("vida8A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida8B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida8C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos8(){
-if(conteoVidasB == 0){
-document.getElementById("vida8D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida8E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida8F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -2027,28 +1953,16 @@ paseE9 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno9(){
-if(conteoVidasA == 0){
+function vidas9(){
+if(conteoVidas == 0){
 document.getElementById("vida9A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida9B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida9C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos9(){
-if(conteoVidasB == 0){
-document.getElementById("vida9D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida9E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida9F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -2113,28 +2027,16 @@ paseE10 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno10(){
-if(conteoVidasA == 0){
+function vidas10(){
+if(conteoVidas == 0){
 document.getElementById("vida10A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida10B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida10C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos10(){
-if(conteoVidasB == 0){
-document.getElementById("vida10D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida10E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida10F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -2199,28 +2101,16 @@ paseE11 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno11(){
-if(conteoVidasA == 0){
+function vidas11(){
+if(conteoVidas == 0){
 document.getElementById("vida11A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida11B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida11C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos11(){
-if(conteoVidasB == 0){
-document.getElementById("vida11D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida11E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida11F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -2285,28 +2175,16 @@ paseE12 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno12(){
-if(conteoVidasA == 0){
+function vidas12(){
+if(conteoVidas == 0){
 document.getElementById("vida12A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida12B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida12C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos12(){
-if(conteoVidasB == 0){
-document.getElementById("vida12D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida12E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida12F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -2371,28 +2249,16 @@ paseE13 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno13(){
-if(conteoVidasA == 0){
+function vidas13(){
+if(conteoVidas == 0){
 document.getElementById("vida13A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida13B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida13C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos13(){
-if(conteoVidasB == 0){
-document.getElementById("vida13D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida13E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida13F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -2457,28 +2323,16 @@ paseE14 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno14(){
-if(conteoVidasA == 0){
+function vidas14(){
+if(conteoVidas == 0){
 document.getElementById("vida14A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida14B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida14C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos14(){
-if(conteoVidasB == 0){
-document.getElementById("vida14D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida14E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida14F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -2543,28 +2397,16 @@ paseE15 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno15(){
-if(conteoVidasA == 0){
+function vidas15(){
+if(conteoVidas == 0){
 document.getElementById("vida15A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida15B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida15C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos15(){
-if(conteoVidasB == 0){
-document.getElementById("vida15D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida15E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida15F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -2629,28 +2471,16 @@ paseE16 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno16(){
-if(conteoVidasA == 0){
+function vidas16(){
+if(conteoVidas == 0){
 document.getElementById("vida16A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida16B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida16C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos16(){
-if(conteoVidasB == 0){
-document.getElementById("vida16D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida16E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida16F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -2715,28 +2545,16 @@ paseE17 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno17(){
-if(conteoVidasA == 0){
+function vidas17(){
+if(conteoVidas == 0){
 document.getElementById("vida17A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida17B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida17C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos17(){
-if(conteoVidasB == 0){
-document.getElementById("vida17D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida17E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida17F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -2801,28 +2619,16 @@ paseE18 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno18(){
-if(conteoVidasA == 0){
+function vidas18(){
+if(conteoVidas == 0){
 document.getElementById("vida18A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida18B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida18C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos18(){
-if(conteoVidasB == 0){
-document.getElementById("vida18D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida18E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida18F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -2887,28 +2693,16 @@ paseE19 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno19(){
-if(conteoVidasA == 0){
+function vidas19(){
+if(conteoVidas == 0){
 document.getElementById("vida19A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida19B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida19C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos19(){
-if(conteoVidasB == 0){
-document.getElementById("vida19D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida19E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida19F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -2973,28 +2767,16 @@ paseE20 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno20(){
-if(conteoVidasA == 0){
+function vidas20(){
+if(conteoVidas == 0){
 document.getElementById("vida20A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida20B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida20C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos20(){
-if(conteoVidasB == 0){
-document.getElementById("vida20D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida20E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida20F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -3059,28 +2841,16 @@ paseE21 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno21(){
-if(conteoVidasA == 0){
+function vidas21(){
+if(conteoVidas == 0){
 document.getElementById("vida21A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida21B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida21C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos21(){
-if(conteoVidasB == 0){
-document.getElementById("vida21D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida21E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida21F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -3145,28 +2915,16 @@ paseE22 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno22(){
-if(conteoVidasA == 0){
+function vidas22(){
+if(conteoVidas == 0){
 document.getElementById("vida22A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida22B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida22C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos22(){
-if(conteoVidasB == 0){
-document.getElementById("vida22D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida22E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida22F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -3231,28 +2989,16 @@ paseE23 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno23(){
-if(conteoVidasA == 0){
+function vidas23(){
+if(conteoVidas == 0){
 document.getElementById("vida23A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida23B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida23C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos23(){
-if(conteoVidasB == 0){
-document.getElementById("vida23D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida23E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida23F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -3317,28 +3063,16 @@ paseE24 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno24(){
-if(conteoVidasA == 0){
+function vidas24(){
+if(conteoVidas == 0){
 document.getElementById("vida24A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida24B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida24C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos24(){
-if(conteoVidasB == 0){
-document.getElementById("vida24D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida24E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida24F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -3403,28 +3137,16 @@ paseE25 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno25(){
-if(conteoVidasA == 0){
+function vidas25(){
+if(conteoVidas == 0){
 document.getElementById("vida25A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida25B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida25C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos25(){
-if(conteoVidasB == 0){
-document.getElementById("vida25D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida25E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida25F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -3489,28 +3211,16 @@ paseE26 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno26(){
-if(conteoVidasA == 0){
+function vidas26(){
+if(conteoVidas == 0){
 document.getElementById("vida26A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida26B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida26C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos26(){
-if(conteoVidasB == 0){
-document.getElementById("vida26D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida26E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida26F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -3575,28 +3285,16 @@ paseE27 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno27(){
-if(conteoVidasA == 0){
+function vidas27(){
+if(conteoVidas == 0){
 document.getElementById("vida27A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida27B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida27C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos27(){
-if(conteoVidasB == 0){
-document.getElementById("vida27D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida27E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida27F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -3661,28 +3359,16 @@ paseE28 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno28(){
-if(conteoVidasA == 0){
+function vidas28(){
+if(conteoVidas == 0){
 document.getElementById("vida28A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida28B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida28C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos28(){
-if(conteoVidasB == 0){
-document.getElementById("vida28D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida28E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida28F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -3747,28 +3433,16 @@ paseE29 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno29(){
-if(conteoVidasA == 0){
+function vidas29(){
+if(conteoVidas == 0){
 document.getElementById("vida29A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida29B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida29C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos29(){
-if(conteoVidasB == 0){
-document.getElementById("vida29D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida29E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida29F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -3833,28 +3507,16 @@ paseE30 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno30(){
-if(conteoVidasA == 0){
+function vidas30(){
+if(conteoVidas == 0){
 document.getElementById("vida30A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida30B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida30C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos30(){
-if(conteoVidasB == 0){
-document.getElementById("vida30D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida30E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida30F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -3919,28 +3581,16 @@ paseE31 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno31(){
-if(conteoVidasA == 0){
+function vidas31(){
+if(conteoVidas == 0){
 document.getElementById("vida31A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida31B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida31C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos31(){
-if(conteoVidasB == 0){
-document.getElementById("vida31D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida31E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida31F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -4005,28 +3655,16 @@ paseE32 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno32(){
-if(conteoVidasA == 0){
+function vidas32(){
+if(conteoVidas == 0){
 document.getElementById("vida32A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida32B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida32C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos32(){
-if(conteoVidasB == 0){
-document.getElementById("vida32D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida32E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida32F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -4091,28 +3729,16 @@ paseE33 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno33(){
-if(conteoVidasA == 0){
+function vidas33(){
+if(conteoVidas == 0){
 document.getElementById("vida33A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida33B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida33C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos33(){
-if(conteoVidasB == 0){
-document.getElementById("vida33D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida33E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida33F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -4177,28 +3803,16 @@ paseE34 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno34(){
-if(conteoVidasA == 0){
+function vidas34(){
+if(conteoVidas == 0){
 document.getElementById("vida34A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida34B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida34C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos34(){
-if(conteoVidasB == 0){
-document.getElementById("vida34D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida34E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida34F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -4263,28 +3877,16 @@ paseE35 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno35(){
-if(conteoVidasA == 0){
+function vidas35(){
+if(conteoVidas == 0){
 document.getElementById("vida35A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida35B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida35C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos35(){
-if(conteoVidasB == 0){
-document.getElementById("vida35D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida35E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida35F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -4349,28 +3951,16 @@ paseE36 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno36(){
-if(conteoVidasA == 0){
+function vidas36(){
+if(conteoVidas == 0){
 document.getElementById("vida36A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida36B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida36C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos36(){
-if(conteoVidasB == 0){
-document.getElementById("vida36D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida36E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida36F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -4435,28 +4025,16 @@ paseE37 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno37(){
-if(conteoVidasA == 0){
+function vidas37(){
+if(conteoVidas == 0){
 document.getElementById("vida37A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida37B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida37C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos37(){
-if(conteoVidasB == 0){
-document.getElementById("vida37D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida37E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida37F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -4521,28 +4099,16 @@ paseE38 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno38(){
-if(conteoVidasA == 0){
+function vidas38(){
+if(conteoVidas == 0){
 document.getElementById("vida38A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida38B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida38C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos38(){
-if(conteoVidasB == 0){
-document.getElementById("vida38D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida38E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida38F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -4607,28 +4173,16 @@ paseE39 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno39(){
-if(conteoVidasA == 0){
+function vidas39(){
+if(conteoVidas == 0){
 document.getElementById("vida39A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida39B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida39C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos39(){
-if(conteoVidasB == 0){
-document.getElementById("vida39D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida39E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida39F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -4693,28 +4247,16 @@ paseE40 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno40(){
-if(conteoVidasA == 0){
+function vidas40(){
+if(conteoVidas == 0){
 document.getElementById("vida40A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida40B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida40C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos40(){
-if(conteoVidasB == 0){
-document.getElementById("vida40D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida40E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida40F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -4779,28 +4321,16 @@ paseE41 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno41(){
-if(conteoVidasA == 0){
+function vidas41(){
+if(conteoVidas == 0){
 document.getElementById("vida41A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida41B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida41C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos41(){
-if(conteoVidasB == 0){
-document.getElementById("vida41D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida41E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida41F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -4865,28 +4395,16 @@ paseE42 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno42(){
-if(conteoVidasA == 0){
+function vidas42(){
+if(conteoVidas == 0){
 document.getElementById("vida42A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida42B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida42C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos42(){
-if(conteoVidasB == 0){
-document.getElementById("vida42D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida42E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida42F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -4951,28 +4469,16 @@ paseE43 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno43(){
-if(conteoVidasA == 0){
+function vidas43(){
+if(conteoVidas == 0){
 document.getElementById("vida43A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida43B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida43C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos43(){
-if(conteoVidasB == 0){
-document.getElementById("vida43D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida43E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida43F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -5037,28 +4543,16 @@ paseE44 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno44(){
-if(conteoVidasA == 0){
+function vidas44(){
+if(conteoVidas == 0){
 document.getElementById("vida44A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida44B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida44C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos44(){
-if(conteoVidasB == 0){
-document.getElementById("vida44D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida44E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida44F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -5123,28 +4617,16 @@ paseE45 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno45(){
-if(conteoVidasA == 0){
+function vidas45(){
+if(conteoVidas == 0){
 document.getElementById("vida45A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida45B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida45C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos45(){
-if(conteoVidasB == 0){
-document.getElementById("vida45D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida45E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida45F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -5209,28 +4691,16 @@ paseE46 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno46(){
-if(conteoVidasA == 0){
+function vidas46(){
+if(conteoVidas == 0){
 document.getElementById("vida46A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida46B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida46C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos46(){
-if(conteoVidasB == 0){
-document.getElementById("vida46D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida46E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida46F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -5295,28 +4765,16 @@ paseE47 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno47(){
-if(conteoVidasA == 0){
+function vidas47(){
+if(conteoVidas == 0){
 document.getElementById("vida47A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida47B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida47C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos47(){
-if(conteoVidasB == 0){
-document.getElementById("vida47D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida47E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida47F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -5381,28 +4839,16 @@ paseE48 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno48(){
-if(conteoVidasA == 0){
+function vidas48(){
+if(conteoVidas == 0){
 document.getElementById("vida48A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida48B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida48C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos48(){
-if(conteoVidasB == 0){
-document.getElementById("vida48D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida48E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida48F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -5467,28 +4913,16 @@ paseE49 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno49(){
-if(conteoVidasA == 0){
+function vidas49(){
+if(conteoVidas == 0){
 document.getElementById("vida49A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida49B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida49C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos49(){
-if(conteoVidasB == 0){
-document.getElementById("vida49D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida49E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida49F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -5553,28 +4987,16 @@ paseE50 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno50(){
-if(conteoVidasA == 0){
+function vidas50(){
+if(conteoVidas == 0){
 document.getElementById("vida50A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida50B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida50C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos50(){
-if(conteoVidasB == 0){
-document.getElementById("vida50D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida50E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida50F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -5639,28 +5061,16 @@ paseE51 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno51(){
-if(conteoVidasA == 0){
+function vidas51(){
+if(conteoVidas == 0){
 document.getElementById("vida51A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida51B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida51C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos51(){
-if(conteoVidasB == 0){
-document.getElementById("vida51D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida51E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida51F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -5725,28 +5135,16 @@ paseE52 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno52(){
-if(conteoVidasA == 0){
+function vidas52(){
+if(conteoVidas == 0){
 document.getElementById("vida52A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida52B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida52C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos52(){
-if(conteoVidasB == 0){
-document.getElementById("vida52D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida52E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida52F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -5811,28 +5209,16 @@ paseE53 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno53(){
-if(conteoVidasA == 0){
+function vidas53(){
+if(conteoVidas == 0){
 document.getElementById("vida53A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida53B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida53C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos53(){
-if(conteoVidasB == 0){
-document.getElementById("vida53D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida53E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida53F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -5897,28 +5283,16 @@ paseE54 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno54(){
-if(conteoVidasA == 0){
+function vidas54(){
+if(conteoVidas == 0){
 document.getElementById("vida54A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida54B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida54C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos54(){
-if(conteoVidasB == 0){
-document.getElementById("vida54D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida54E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida54F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -5983,28 +5357,16 @@ paseE55 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno55(){
-if(conteoVidasA == 0){
+function vidas55(){
+if(conteoVidas == 0){
 document.getElementById("vida55A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida55B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida55C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos55(){
-if(conteoVidasB == 0){
-document.getElementById("vida55D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida55E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida55F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -6069,28 +5431,16 @@ paseE56 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno56(){
-if(conteoVidasA == 0){
+function vidas56(){
+if(conteoVidas == 0){
 document.getElementById("vida56A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida56B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida56C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos56(){
-if(conteoVidasB == 0){
-document.getElementById("vida56D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida56E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida56F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -6155,28 +5505,16 @@ paseE57 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno57(){
-if(conteoVidasA == 0){
+function vidas57(){
+if(conteoVidas == 0){
 document.getElementById("vida57A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida57B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida57C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos57(){
-if(conteoVidasB == 0){
-document.getElementById("vida57D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida57E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida57F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -6241,28 +5579,16 @@ paseE58 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno58(){
-if(conteoVidasA == 0){
+function vidas58(){
+if(conteoVidas == 0){
 document.getElementById("vida58A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida58B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida58C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos58(){
-if(conteoVidasB == 0){
-document.getElementById("vida58D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida58E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida58F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -6327,28 +5653,16 @@ paseE59 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno59(){
-if(conteoVidasA == 0){
+function vidas59(){
+if(conteoVidas == 0){
 document.getElementById("vida59A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida59B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida59C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos59(){
-if(conteoVidasB == 0){
-document.getElementById("vida59D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida59E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida59F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -6413,28 +5727,16 @@ paseE60 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno60(){
-if(conteoVidasA == 0){
+function vidas60(){
+if(conteoVidas == 0){
 document.getElementById("vida60A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida60B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida60C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos60(){
-if(conteoVidasB == 0){
-document.getElementById("vida60D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida60E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida60F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -6499,28 +5801,16 @@ paseE61 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno61(){
-if(conteoVidasA == 0){
+function vidas61(){
+if(conteoVidas == 0){
 document.getElementById("vida61A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida61B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida61C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos61(){
-if(conteoVidasB == 0){
-document.getElementById("vida61D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida61E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida61F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -6585,28 +5875,16 @@ paseE62 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno62(){
-if(conteoVidasA == 0){
+function vidas62(){
+if(conteoVidas == 0){
 document.getElementById("vida62A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida62B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida62C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos62(){
-if(conteoVidasB == 0){
-document.getElementById("vida62D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida62E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida62F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -6671,28 +5949,16 @@ paseE63 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno63(){
-if(conteoVidasA == 0){
+function vidas63(){
+if(conteoVidas == 0){
 document.getElementById("vida63A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida63B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida63C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos63(){
-if(conteoVidasB == 0){
-document.getElementById("vida63D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida63E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida63F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -6757,28 +6023,16 @@ paseE64 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno64(){
-if(conteoVidasA == 0){
+function vidas64(){
+if(conteoVidas == 0){
 document.getElementById("vida64A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida64B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida64C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos64(){
-if(conteoVidasB == 0){
-document.getElementById("vida64D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida64E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida64F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -6843,28 +6097,16 @@ paseE65 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno65(){
-if(conteoVidasA == 0){
+function vidas65(){
+if(conteoVidas == 0){
 document.getElementById("vida65A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida65B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida65C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos65(){
-if(conteoVidasB == 0){
-document.getElementById("vida65D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida65E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida65F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -6929,28 +6171,16 @@ paseE66 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno66(){
-if(conteoVidasA == 0){
+function vidas66(){
+if(conteoVidas == 0){
 document.getElementById("vida66A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida66B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida66C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos66(){
-if(conteoVidasB == 0){
-document.getElementById("vida66D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida66E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida66F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -7015,28 +6245,16 @@ paseE67 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno67(){
-if(conteoVidasA == 0){
+function vidas67(){
+if(conteoVidas == 0){
 document.getElementById("vida67A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida67B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida67C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos67(){
-if(conteoVidasB == 0){
-document.getElementById("vida67D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida67E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida67F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -7101,28 +6319,16 @@ paseE68 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno68(){
-if(conteoVidasA == 0){
+function vidas68(){
+if(conteoVidas == 0){
 document.getElementById("vida68A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida68B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida68C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos68(){
-if(conteoVidasB == 0){
-document.getElementById("vida68D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida68E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida68F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -7187,28 +6393,16 @@ paseE69 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno69(){
-if(conteoVidasA == 0){
+function vidas69(){
+if(conteoVidas == 0){
 document.getElementById("vida69A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida69B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida69C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos69(){
-if(conteoVidasB == 0){
-document.getElementById("vida69D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida69E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida69F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -7273,28 +6467,16 @@ paseE70 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno70(){
-if(conteoVidasA == 0){
+function vidas70(){
+if(conteoVidas == 0){
 document.getElementById("vida70A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida70B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida70C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos70(){
-if(conteoVidasB == 0){
-document.getElementById("vida70D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida70E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida70F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -7359,28 +6541,16 @@ paseE71 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno71(){
-if(conteoVidasA == 0){
+function vidas71(){
+if(conteoVidas == 0){
 document.getElementById("vida71A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida71B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida71C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos71(){
-if(conteoVidasB == 0){
-document.getElementById("vida71D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida71E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida71F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -7445,28 +6615,16 @@ paseE72 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno72(){
-if(conteoVidasA == 0){
+function vidas72(){
+if(conteoVidas == 0){
 document.getElementById("vida72A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida72B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida72C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos72(){
-if(conteoVidasB == 0){
-document.getElementById("vida72D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida72E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida72F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -7531,28 +6689,16 @@ paseE73 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno73(){
-if(conteoVidasA == 0){
+function vidas73(){
+if(conteoVidas == 0){
 document.getElementById("vida73A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida73B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida73C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos73(){
-if(conteoVidasB == 0){
-document.getElementById("vida73D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida73E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida73F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -7617,28 +6763,16 @@ paseE74 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno74(){
-if(conteoVidasA == 0){
+function vidas74(){
+if(conteoVidas == 0){
 document.getElementById("vida74A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida74B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida74C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos74(){
-if(conteoVidasB == 0){
-document.getElementById("vida74D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida74E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida74F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -7703,28 +6837,16 @@ paseE75 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno75(){
-if(conteoVidasA == 0){
+function vidas75(){
+if(conteoVidas == 0){
 document.getElementById("vida75A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida75B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida75C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos75(){
-if(conteoVidasB == 0){
-document.getElementById("vida75D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida75E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida75F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -7789,28 +6911,16 @@ paseE76 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno76(){
-if(conteoVidasA == 0){
+function vidas76(){
+if(conteoVidas == 0){
 document.getElementById("vida76A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida76B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida76C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos76(){
-if(conteoVidasB == 0){
-document.getElementById("vida76D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida76E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida76F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -7875,28 +6985,16 @@ paseE77 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno77(){
-if(conteoVidasA == 0){
+function vidas77(){
+if(conteoVidas == 0){
 document.getElementById("vida77A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida77B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida77C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos77(){
-if(conteoVidasB == 0){
-document.getElementById("vida77D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida77E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida77F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -7961,28 +7059,16 @@ paseE78 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno78(){
-if(conteoVidasA == 0){
+function vidas78(){
+if(conteoVidas == 0){
 document.getElementById("vida78A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida78B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida78C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos78(){
-if(conteoVidasB == 0){
-document.getElementById("vida78D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida78E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida78F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -8047,28 +7133,16 @@ paseE79 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno79(){
-if(conteoVidasA == 0){
+function vidas79(){
+if(conteoVidas == 0){
 document.getElementById("vida79A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida79B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida79C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos79(){
-if(conteoVidasB == 0){
-document.getElementById("vida79D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida79E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida79F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -8133,28 +7207,16 @@ paseE80 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno80(){
-if(conteoVidasA == 0){
+function vidas80(){
+if(conteoVidas == 0){
 document.getElementById("vida80A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida80B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida80C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos80(){
-if(conteoVidasB == 0){
-document.getElementById("vida80D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida80E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida80F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -8219,28 +7281,16 @@ paseE81 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno81(){
-if(conteoVidasA == 0){
+function vidas81(){
+if(conteoVidas == 0){
 document.getElementById("vida81A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida81B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida81C").innerHTML = vidasCambio;
-}
-}
-function vidasFamDos81(){
-if(conteoVidasB == 0){
-document.getElementById("vida81D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida81E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida81F").innerHTML = vidasCambio;
 }
 }
 //----------------------------------------------
@@ -8305,30 +7355,17 @@ paseE82 = false;
 }
 }
 //----------------------------------------------
-function vidasFamUno82(){
-if(conteoVidasA == 0){
+function vidas82(){
+if(conteoVidas == 0){
 document.getElementById("vida82A").innerHTML = vidasCambio;
-conteoVidasA++;
-}else if(conteoVidasA == 1){
+conteoVidas++;
+}else if(conteoVidas == 1){
 document.getElementById("vida82B").innerHTML = vidasCambio;
-conteoVidasA++;
+conteoVidas++;
 }
-else if(conteoVidasA == 2){
+else if(conteoVidas == 2){
 document.getElementById("vida82C").innerHTML = vidasCambio;
 }
 }
-function vidasFamDos82(){
-if(conteoVidasB == 0){
-document.getElementById("vida82D").innerHTML = vidasCambio;
-conteoVidasB++;
-}else if(conteoVidasB == 1){
-document.getElementById("vida82E").innerHTML = vidasCambio;
-conteoVidasB++;
-}
-else if(conteoVidasB == 2){
-document.getElementById("vida82F").innerHTML = vidasCambio;
-}
-}
 //----------------------------------------------
-
 		//---------------------------------PREGUNTA 3------------------------------------------

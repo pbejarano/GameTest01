@@ -21,6 +21,10 @@ hr {
     margin-left: 0;
 }
 
+.textoPuntuacion{
+	font-size: 80px;
+}
+
 .modal-title {
 	margin-left: auto;
 	margin-right: auto;
@@ -31,6 +35,10 @@ hr {
 
 .familias{
 	text-align: center;
+}
+
+.familiasCol{
+	font-size: 60px;
 }
 
 .tabla-respuestas{
@@ -112,6 +120,8 @@ hr {
 
 .modal-header {
 	border-bottom:none;
+	position: fixed;
+    width: 100%;
 }
 
 .btn-primary{
@@ -127,15 +137,20 @@ hr {
 }
 
 .vidas-main{
-	width: 165px;
+	width: 280px;
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 20px;
+	margin-top: 40px;
 }
 
 .vidas{
-	width: 30px;
+	width: 65px;
 }
 
+.fs-5 {
+	margin-top: 20px;
+    font-size: 2.25rem!important;
+}
 
 

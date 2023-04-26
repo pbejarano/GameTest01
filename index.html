@@ -11,46 +11,18 @@
 
   </head>
   <body>
-    <div class="container-fluid">
+    <div class="container-fluid" id="mainIndex">
+
+
       
       <!--main-->
-      <div class="btn-position" id="list-btn-modal">
-      
-      <div class="containerRegister">
-        <h3>Ingrese Familias</h3>
-        <br>
-        <input type="text" name="familiaUno" id="familiaUno" placeholder="Familia Uno">
-        <h1>VS</h1>
-        <input type="text" name="familiaDos" id="familiaDos" placeholder="Familia Dos">
-        <br>
-        <br>
-        <hr>
-        <p>Configuracion</p>
-        <div class="form-check">
-           <input class="form-check-input" onclick="mostrarPreguntas()" type="checkbox" value="true" id="mostrarPreguntas" checked>
-           <label class="form-check-label" for="mostrarPreguntas">Mostrar preguntas</label>
-        </div>
+      <button onclick="preComenzar()">Jugar</button>
 
-        <br>
-        <hr>
-        <br>
-        <button onclick="comenzar()">Comenzar</button>
+      <button onclick="respuestas()">Respuestas</button>
 
-      </div>
-
-
-
-
-      <hr>
-      <br>
-       <div id="list-btn-vista-respuesta">
-
-        <button onclick="respuestas()">Mostrar Respuestas</button>
-
-        </div>
-
+      <button onclick="about()">Acerca de</button>
       <!--main-->
-      </div>
+      
 
 
     
