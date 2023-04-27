@@ -188,4 +188,26 @@ hr {
 	/*background-size: cover;*/
 }
 
+.mainListPreguntas{
+	max-width: 800px;
+	margin: auto;
+}
 
+.accordion-body {
+    width: 480px;
+    margin: auto;
+}
+
+.btn-regresar-listRespuestas{
+	right: 0px;
+    position: fixed;
+    top: 0px;
+    margin-right: 20px;
+    margin-top: 20px;
+    border-radius: 15px;
+}
+
+.listRespText{
+	padding-right: 10px;
+	padding-left: 10px;
+}

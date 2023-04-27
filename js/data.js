@@ -29,7 +29,7 @@ const preguntas = [
             {respuestaDos: "Jitomate", puntuacionDos: 20},
             {respuestaTres: "Fresa", puntuacionTres: 13},
             {respuestaCuatro: "Mole", puntuacionCuatro: 8},
-            {respuestaCinco: "Sandía", puntuacionCinco: 0}
+            {respuestaCinco: "Sandía", puntuacionCinco: 4}
         ]
     },
     {
@@ -354,7 +354,7 @@ const preguntas = [
 	titulo : "Menciona algo que tenga cuernos.",
 	id: 32,
 	respuestas: [
-			{respuestaUno: "Toro", puntuacionUno: 62},
+			{respuestaUno: "Mi Ex", puntuacionUno: 62},
 			{respuestaDos: "Venado", puntuacionDos: 50},
 			{respuestaTres: "Chivo", puntuacionTres: 22},
 			{respuestaCuatro: "Vaca", puntuacionCuatro: 17},
@@ -955,43 +955,6 @@ var conteoVidas = 0;
 
 const cantidadPreguntas = preguntas.length;
 
-//Intefaz donde muestra las respuestas de las preguntas.
-
-function respuestas(){
-
-var vista = '<div class="listPreguntas"><h4>Lista de preguntas</h4></div><br><p>Cantidad de preguntas: '+cantidadPreguntas+'</p>';
-	
-for (var x = 0; x < cantidadPreguntas; x++) {
-
-		vista += '<div> Pregunta '+x+'</div>';
-		vista += '<div class="card card-body" style=" text-align: center;"><div class="row">';
-		vista += '<div class="col-5">'+preguntas[x].respuestas[0].respuestaUno+'</div><div class="col-2">---></div><div class="col-5">'+preguntas[x].respuestas[0].puntuacionUno+'</div>';
-		vista += '</div></div><hr>';
-
-		//pizarra Respuesta 2
-		vista += '<div class="card card-body" style=" text-align: center;"><div class="row">';
-		vista += '<div class="col-5">'+preguntas[x].respuestas[1].respuestaDos+'</div><div class="col-2">---></div><div class="col-5">'+preguntas[x].respuestas[1].puntuacionDos+'</div>';
-		vista += '</div></div><hr>';
-
-		//pizarra Respuesta 3
-		vista += '<div class="card card-body" style=" text-align: center;"><div class="row">';
-		vista += '<div class="col-5">'+preguntas[x].respuestas[2].respuestaTres+'</div><div class="col-2">---></div><div class="col-5">'+preguntas[x].respuestas[2].puntuacionTres+'</div>';
-		vista += '</div></div><hr>';
-
-		//pizarra Respuesta 4
-		vista += '<div class="card card-body" style=" text-align: center;"><div class="row">';
-		vista += '<div class="col-5">'+preguntas[x].respuestas[3].respuestaCuatro+'</div><div class="col-2">---></div><div class="col-5">'+preguntas[x].respuestas[3].puntuacionCuatro+'</div>';
-		vista += '</div></div><hr>';
-
-		//pizarra Respuesta 5
-		vista += '<div class="card card-body" style=" text-align: center;"><div class="row">';
-		vista += '<div class="col-5">'+preguntas[x].respuestas[4].respuestaCinco+'</div><div class="col-2">---></div><div class="col-5">'+preguntas[x].respuestas[4].puntuacionCinco+'</div>';
-		vista += '</div></div></div><hr>';
-	}
-
-	document.getElementById('list-btn-vista-respuesta').innerHTML = vista;
-}
-
 //Visibilidad de preguntas.
 function mostrarPreguntas(){
 	preguntasVisibles = document.getElementById("mostrarPreguntas");
@@ -1019,23 +982,53 @@ function reinicioDeVidas(){
 
 
 function mainIndex(){
-	var printMainIndex = '<button onclick="preComenzar()">Jugar</button><button onclick="respuestas()">Respuestas</button><button onclick="about()">Acerca de</button>';
+	var printMainIndex = '<div class="main"><div class="menu-main"><div class="main-btns"><button class="btn-menu" onclick="preComenzar()">Jugar</button><button class="btn-menu" onclick="respuestas()">Respuestas</button><button class="btn-menu" onclick="about()">Acerca de</button></div></div></div>';
 
 	document.getElementById('mainIndex').innerHTML = printMainIndex;
 }
 
 //Interfaz para introducir los nombres de familias.
 function preComenzar(){
-	var printInt = '<div class="btn-position" id="list-btn-modal"><div class="containerRegister"><h3>Ingrese Familias</h3><br><input type="text" name="familiaUno" id="familiaUno" placeholder="Familia Uno"><h1>VS</h1><input type="text" name="familiaDos" id="familiaDos" placeholder="Familia Dos"><br><br><hr><p>Configuracion</p><div class="form-check"><input class="form-check-input" onclick="mostrarPreguntas()" type="checkbox" value="true" id="mostrarPreguntas" checked><label class="form-check-label" for="mostrarPreguntas">Mostrar preguntas</label></div><br><hr><br><button onclick="comenzar()">Comenzar</button></div><hr><br><div id="list-btn-vista-respuesta"><button onclick="respuestas()">Mostrar Respuestas</button></div></div>';
+	var printInt = '<div class="btn-position" id="list-btn-modal"><div class="containerRegister"><h3>Ingrese Familias</h3><br><input type="text" name="familiaUno" id="familiaUno" placeholder="Familia Uno"><h1>VS</h1><input type="text" name="familiaDos" id="familiaDos" placeholder="Familia Dos"><br><br><hr><p>Configuracion</p><div class="form-check"><input class="form-check-input" onclick="mostrarPreguntas()" type="checkbox" value="true" id="mostrarPreguntas" checked><label class="form-check-label" for="mostrarPreguntas">Mostrar preguntas</label></div><br><hr><br><button onclick="comenzar()">Comenzar</button></div><hr><br></div>';
 
 	document.getElementById('mainIndex').innerHTML = printInt;
 }
 
 //Interfaz con respuestas.
 function respuestas(){
-	var printResp = '<h2>Se mostraran las Resputes</h2><br><br><button onclick="mainIndex()">Regresar</button>';
+	var printResp = '<div class="mainListPreguntas"><div class="listPreguntas"><h4>Lista de preguntas</h4></div><br><p>Cantidad de preguntas: '+cantidadPreguntas+'</p>';
+	
+for (var x = 0; x < cantidadPreguntas; x++) {
 
+		printResp += '<div class="accordion accordion-flush" id="flush-headingOne"><div class="accordion-item"><h2 class="accordion-header" id="flush-headingOne"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#resAccor'+x+'" aria-expanded="false" aria-controls="resAccor'+x+'"><div class="listRespText">'+x+': '+preguntas[x].titulo+'</div></button></h2><div id="resAccor'+x+'" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#flush-headingOne"><div class="accordion-body">';
+		printResp += '<div class="card card-body" style=" text-align: center;"><div class="row">';
+		printResp += '<div class="col-5">'+preguntas[x].respuestas[0].respuestaUno+'</div><div class="col-2">---></div><div class="col-5">'+preguntas[x].respuestas[0].puntuacionUno+'</div>';
+		printResp += '</div></div><hr>';
+
+		//pizarra Respuesta 2
+		printResp += '<div class="card card-body" style=" text-align: center;"><div class="row">';
+		printResp += '<div class="col-5">'+preguntas[x].respuestas[1].respuestaDos+'</div><div class="col-2">---></div><div class="col-5">'+preguntas[x].respuestas[1].puntuacionDos+'</div>';
+		printResp += '</div></div><hr>';
+
+		//pizarra Respuesta 3
+		printResp += '<div class="card card-body" style=" text-align: center;"><div class="row">';
+		printResp += '<div class="col-5">'+preguntas[x].respuestas[2].respuestaTres+'</div><div class="col-2">---></div><div class="col-5">'+preguntas[x].respuestas[2].puntuacionTres+'</div>';
+		printResp += '</div></div><hr>';
+
+		//pizarra Respuesta 4
+		printResp += '<div class="card card-body" style=" text-align: center;"><div class="row">';
+		printResp += '<div class="col-5">'+preguntas[x].respuestas[3].respuestaCuatro+'</div><div class="col-2">---></div><div class="col-5">'+preguntas[x].respuestas[3].puntuacionCuatro+'</div>';
+		printResp += '</div></div><hr>';
+
+		//pizarra Respuesta 5
+		printResp += '<div class="card card-body" style=" text-align: center;"><div class="row">';
+		printResp += '<div class="col-5">'+preguntas[x].respuestas[4].respuestaCinco+'</div><div class="col-2">---></div><div class="col-5">'+preguntas[x].respuestas[4].puntuacionCinco+'</div>';
+		printResp += '</div></div></div></div></div></div><hr>';
+		
+	}
+	printResp += '<button class="btn-regresar-listRespuestas" onclick="mainIndex()">Regresar</button></div>';
 	document.getElementById('mainIndex').innerHTML = printResp;
+
 }
 
 function about(){
