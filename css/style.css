@@ -2,7 +2,6 @@ hr {
 	margin: 3px;
 }
 
-
 .listPreguntas{
 	margin: 30px auto 0px auto;
 	max-width: 200px;
@@ -154,6 +153,7 @@ hr {
     font-size: 2.25rem!important;
 }
 
+
 .menu-main{
 	background-color: red;
 	border-left: solid 5px black;
@@ -187,3 +187,5 @@ hr {
 	/*background-image: url("../img/background.jpg");*/
 	/*background-size: cover;*/
 }
+
+
