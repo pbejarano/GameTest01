@@ -947,8 +947,6 @@ var puntuacionFamDos = 0;
 var puntuacionUnoR= 0;
 var textoRonda = "puntuacionPorRonda";
 
-puntuacionFamUno
-
 
 //Vidas
 var vidasCambio = '<img src="img/x.png" class="vidas">';
