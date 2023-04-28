@@ -74,6 +74,18 @@ hr {
 	width: 440px;
 }
 
+
+.card-X-Resp{
+	--bs-card-border-color: none;
+	background-color: #C2ECAC;
+	max-width: 440px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+
+	border-radius: 15px;
+}
+
 .btn:hover {
     color: var(--bs-btn-hover-color);
     background-color: #61DA2F;
@@ -109,8 +121,12 @@ hr {
 
 }
 
-.col-5{
+.col-5X{
 	width: 194px;
+}
+
+.col-5X-Resp{
+	max-width: 194px;
 }
 
 .checkMain{
@@ -155,22 +171,23 @@ hr {
 
 
 .menu-main{
-	background-color: red;
-	border-left: solid 5px black;
-	height: 100%;
-	right: 0px;
-	position: absolute;
-	width: 220px;
+    height: 190px;
+    width: 220px;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 
 .main-btns{
 	position: absolute;
 	display: flex;
 	flex-direction: column;
-	margin: auto;
 	align-items: center;
-	width: 215px;
-	bottom: 43%;
+	width: 220px;
+	top: 45px;
 }
 
 .btn-menu{
@@ -182,10 +199,11 @@ hr {
 }
 
 .main{
+	position: absolute;
 	width: 100%;
 	height: 100%;
-	/*background-image: url("../img/background.jpg");*/
-	/*background-size: cover;*/
+	background-image: url("../img/background.jpg");
+	background-size: cover;
 }
 
 .mainListPreguntas{
@@ -195,6 +213,11 @@ hr {
 
 .accordion-body {
     width: 480px;
+    margin: auto;
+}
+
+.accordion-body-X-Resp {
+    max-width: 480px;
     margin: auto;
 }
 
@@ -210,4 +233,53 @@ hr {
 .listRespText{
 	padding-right: 10px;
 	padding-left: 10px;
+}
+
+.list-group-item:last-child {
+    display: flex;
+}
+
+.container-menu-list{
+	z-index: 1;
+	background-color: white;
+	position: fixed;
+	width: 100%;
+  	border-bottom: solid 1px black;
+  	padding-left: 10%;
+  	padding-right: 10%;
+
+	}
+
+.container-list-preg{
+	position: relative;
+	top: 205px;
+	max-width: 750px;
+	margin: auto;
+	padding: 0px 15px 10px 15px;
+}
+
+.container-fluid{
+	padding-right: 0;
+    padding-left: 0;
+}
+
+.style-img-main{
+	max-width: 486px;
+    position: fixed;
+    bottom: 0px;
+    right: -10%;
+
+}
+
+.img-main{
+	max-width: 486px;
+}
+
+.style-img-main-top{
+	width: 22rem;
+	margin: 40px auto auto auto;;
+}
+
+.img-main-top{
+	width: 22rem;
 }

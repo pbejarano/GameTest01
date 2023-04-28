@@ -981,58 +981,61 @@ function reinicioDeVidas(){
 //Intefraz IDEX
 
 
+
 function mainIndex(){
-	var printMainIndex = '<div class="main"><div class="menu-main"><div class="main-btns"><button class="btn-menu" onclick="preComenzar()">Jugar</button><button class="btn-menu" onclick="respuestas()">Respuestas</button><button class="btn-menu" onclick="about()">Acerca de</button></div></div></div>';
+	var printMainIndex = '<div class="main"><div class="style-img-main-top"><img class="img-main-top" src="img/logo-100.png"></div><div class="menu-main"><div class="main-btns"><button class="btn-menu" onclick="preComenzar()">Jugar</button><button class="btn-menu" onclick="respuestas()">Respuestas</button><button class="btn-menu" onclick="instrucciones()">Instrucciones</button></div></div></div>';
 
 	document.getElementById('mainIndex').innerHTML = printMainIndex;
 }
 
 //Interfaz para introducir los nombres de familias.
 function preComenzar(){
-	var printInt = '<div class="btn-position" id="list-btn-modal"><div class="containerRegister"><h3>Ingrese Familias</h3><br><input type="text" name="familiaUno" id="familiaUno" placeholder="Familia Uno"><h1>VS</h1><input type="text" name="familiaDos" id="familiaDos" placeholder="Familia Dos"><br><br><hr><p>Configuracion</p><div class="form-check"><input class="form-check-input" onclick="mostrarPreguntas()" type="checkbox" value="true" id="mostrarPreguntas" checked><label class="form-check-label" for="mostrarPreguntas">Mostrar preguntas</label></div><br><hr><br><button onclick="comenzar()">Comenzar</button></div><hr><br></div>';
+	var printInt = '<div class="btn-position" id="list-btn-modal"><div class="containerRegister"><h3>Ingrese Familias</h3><br><input type="text" name="familiaUno" id="familiaUno" placeholder="Familia Uno"><h1>VS</h1><input type="text" name="familiaDos" id="familiaDos" placeholder="Familia Dos"><br><br><hr><p>Configuracion</p><div class="form-check"><input class="form-check-input" onclick="mostrarPreguntas()" type="checkbox" value="true" id="mostrarPreguntas" checked><label class="form-check-label" for="mostrarPreguntas">Mostrar preguntas</label></div><br><hr><br><button onclick="comenzar()">Comenzar</button></div><hr><br></div><button class="btn-regresar-listRespuestas" onclick="mainIndex()">Regresar</button>';
 
 	document.getElementById('mainIndex').innerHTML = printInt;
 }
 
+ 
+
 //Interfaz con respuestas.
 function respuestas(){
-	var printResp = '<div class="mainListPreguntas"><div class="listPreguntas"><h4>Lista de preguntas</h4></div><br><p>Cantidad de preguntas: '+cantidadPreguntas+'</p>';
+	var printResp = '<div class="mainListPreguntas"><div class="listPreguntas"><h4>Lista de preguntas</h4></div><br><p style="text-align: center;" >Cantidad de preguntas: '+cantidadPreguntas+'</p>';
 	
 for (var x = 0; x < cantidadPreguntas; x++) {
 
-		printResp += '<div class="accordion accordion-flush" id="flush-headingOne"><div class="accordion-item"><h2 class="accordion-header" id="flush-headingOne"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#resAccor'+x+'" aria-expanded="false" aria-controls="resAccor'+x+'"><div class="listRespText">'+x+': '+preguntas[x].titulo+'</div></button></h2><div id="resAccor'+x+'" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#flush-headingOne"><div class="accordion-body">';
-		printResp += '<div class="card card-body" style=" text-align: center;"><div class="row">';
-		printResp += '<div class="col-5">'+preguntas[x].respuestas[0].respuestaUno+'</div><div class="col-2">---></div><div class="col-5">'+preguntas[x].respuestas[0].puntuacionUno+'</div>';
-		printResp += '</div></div><hr>';
+		printResp += '<hr><div class="accordion accordion-flush" id="flush-headingOne"><div class="accordion-item"><h2 class="accordion-header" id="flush-headingOne"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#resAccor'+x+'" aria-expanded="false" aria-controls="resAccor'+x+'"><div class="listRespText"><strong>'+x+':.  </strong>'+preguntas[x].titulo+'</div></button></h2><div id="resAccor'+x+'" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#flush-headingOne"><div class="accordion-body-X-Resp">';
+		printResp += '<div class="card-X-Resp card-body" style=" text-align: center;"><div class="row">';
+		printResp += '<div class="col-5 col-5X-Resp">'+preguntas[x].respuestas[0].respuestaUno+'</div><div class="col-2">---></div><div class="col-5 col-5X-Resp">'+preguntas[x].respuestas[0].puntuacionUno+'</div>';
+		printResp += '</div></div>';
 
 		//pizarra Respuesta 2
-		printResp += '<div class="card card-body" style=" text-align: center;"><div class="row">';
-		printResp += '<div class="col-5">'+preguntas[x].respuestas[1].respuestaDos+'</div><div class="col-2">---></div><div class="col-5">'+preguntas[x].respuestas[1].puntuacionDos+'</div>';
-		printResp += '</div></div><hr>';
+		printResp += '<div class="card-X-Resp card-body" style=" text-align: center;"><div class="row">';
+		printResp += '<div class="col-5 col-5X-Resp">'+preguntas[x].respuestas[1].respuestaDos+'</div><div class="col-2">---></div><div class="col-5 col-5X-Resp">'+preguntas[x].respuestas[1].puntuacionDos+'</div>';
+		printResp += '</div></div>';
 
 		//pizarra Respuesta 3
-		printResp += '<div class="card card-body" style=" text-align: center;"><div class="row">';
-		printResp += '<div class="col-5">'+preguntas[x].respuestas[2].respuestaTres+'</div><div class="col-2">---></div><div class="col-5">'+preguntas[x].respuestas[2].puntuacionTres+'</div>';
-		printResp += '</div></div><hr>';
+		printResp += '<div class="card-X-Resp card-body" style=" text-align: center;"><div class="row">';
+		printResp += '<div class="col-5 col-5X-Resp">'+preguntas[x].respuestas[2].respuestaTres+'</div><div class="col-2">---></div><div class="col-5 col-5X-Resp">'+preguntas[x].respuestas[2].puntuacionTres+'</div>';
+		printResp += '</div></div>';
 
 		//pizarra Respuesta 4
-		printResp += '<div class="card card-body" style=" text-align: center;"><div class="row">';
-		printResp += '<div class="col-5">'+preguntas[x].respuestas[3].respuestaCuatro+'</div><div class="col-2">---></div><div class="col-5">'+preguntas[x].respuestas[3].puntuacionCuatro+'</div>';
-		printResp += '</div></div><hr>';
+		printResp += '<div class="card-X-Resp card-body" style=" text-align: center;"><div class="row">';
+		printResp += '<div class="col-5 col-5X-Resp">'+preguntas[x].respuestas[3].respuestaCuatro+'</div><div class="col-2">---></div><div class="col-5 col-5X-Resp">'+preguntas[x].respuestas[3].puntuacionCuatro+'</div>';
+		printResp += '</div></div>';
 
 		//pizarra Respuesta 5
-		printResp += '<div class="card card-body" style=" text-align: center;"><div class="row">';
-		printResp += '<div class="col-5">'+preguntas[x].respuestas[4].respuestaCinco+'</div><div class="col-2">---></div><div class="col-5">'+preguntas[x].respuestas[4].puntuacionCinco+'</div>';
-		printResp += '</div></div></div></div></div></div><hr>';
+		printResp += '<div class="card-X-Resp card-body" style=" text-align: center;"><div class="row">';
+		printResp += '<div class="col-5 col-5X-Resp">'+preguntas[x].respuestas[4].respuestaCinco+'</div><div class="col-2">---></div><div class="col-5 col-5X-Resp">'+preguntas[x].respuestas[4].puntuacionCinco+'</div>';
+		printResp += '</div></div></div></div></div></div>';
 		
 	}
-	printResp += '<button class="btn-regresar-listRespuestas" onclick="mainIndex()">Regresar</button></div>';
+	printResp += '<br><button class="btn-regresar-listRespuestas" onclick="mainIndex()">Regresar</button></div>';
 	document.getElementById('mainIndex').innerHTML = printResp;
 
 }
 
-function about(){
-	var printAbout = '<h2>Se mostrara informacion de creador</h2><br><br><button onclick="mainIndex()">Regresar</button>';
+function instrucciones(){
+	var printAbout = '<h2>Se mostrara como se juega</h2><br><br><button onclick="mainIndex()">Regresar</button>';
 
 	document.getElementById('mainIndex').innerHTML = printAbout;
 }
@@ -1043,7 +1046,7 @@ function comenzar(){
 	familiaUno = document.getElementById("familiaUno").value;
 	familiaDos = document.getElementById("familiaDos").value;
 
-var print = '<br><p>Configuracion de puntuación:</p><div class="form-check form-check-inline"><input class="form-check-input" onclick="puntosMultiplicados0()" value="0" type="radio" name="flexRadioDefault" id="flexRadioDefault0" checked><label class="form-check-label" for="flexRadioDefault0">Normal</label></div><div class="form-check form-check-inline"><input class="form-check-input" onclick="puntosMultiplicados1()" value="1" type="radio" name="flexRadioDefault" id="flexRadioDefault1"><label class="form-check-label" for="flexRadioDefault1">Puntos X2</label></div><div class="form-check form-check-inline"><input class="form-check-input" onclick="puntosMultiplicados2()" value="2" type="radio" name="flexRadioDefault" id="flexRadioDefault2"><label class="form-check-label" for="flexRadioDefault2">Puntos X3</label></div><hr><div class="listPreguntas"><h4>Lista de preguntas</h4></div><br><p>Cantidad de preguntas: '+cantidadPreguntas+'</p><br>';
+var print = '<div class="container-menu-list"><p>Configuracion de puntuación:</p><div class="form-check form-check-inline"><input class="form-check-input" onclick="puntosMultiplicados0()" value="0" type="radio" name="flexRadioDefault" id="flexRadioDefault0" checked><label class="form-check-label" for="flexRadioDefault0">Normal</label></div><div class="form-check form-check-inline"><input class="form-check-input" onclick="puntosMultiplicados1()" value="1" type="radio" name="flexRadioDefault" id="flexRadioDefault1"><label class="form-check-label" for="flexRadioDefault1">Puntos X2</label></div><div class="form-check form-check-inline"><input class="form-check-input" onclick="puntosMultiplicados2()" value="2" type="radio" name="flexRadioDefault" id="flexRadioDefault2"><label class="form-check-label" for="flexRadioDefault2">Puntos X3</label></div><hr><div class="listPreguntas"><h4>Lista de preguntas</h4><p>Cantidad de preguntas: '+cantidadPreguntas+'</p></div></div><div class="container-list-preg">';
 
 for (var i = 0; i < cantidadPreguntas; i++) {
 
@@ -1100,7 +1103,7 @@ for (var i = 0; i < cantidadPreguntas; i++) {
 		print += '<div class="col-8"><div class="textoPregunta">Respuesta 1.</div><div style="min-height: 22.6px;">';
 		print += '<div class="collapse collapse-horizontal" id="collapseWidthExample'+i+"pregA"+'">';
 		print += '<div class="card card-body" style="text-align: center;"><div class="row">';
-		print += '<div class="col-5">'+preguntas[i].respuestas[0].respuestaUno+'</div><div class="col-2">---></div><div class="col-5">'+preguntas[i].respuestas[0].puntuacionUno+'</div>';
+		print += '<div class="col-5 col-5X">'+preguntas[i].respuestas[0].respuestaUno+'</div><div class="col-2">---></div><div class="col-5 col-5X">'+preguntas[i].respuestas[0].puntuacionUno+'</div>';
 		print += '</div></div></div></div></div>'
 		print += '<div class="col-2"><button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample'+i+"pregA"+'" aria-expanded="false" aria-controls="collapseWidthExample"><!--ICON EYE--><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16"><path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/><path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/></svg><!--ICON EYE--></button></div></div><hr>';
 
@@ -1112,7 +1115,7 @@ for (var i = 0; i < cantidadPreguntas; i++) {
 		print += '<div class="col-8"><div class="textoPregunta">Respuesta 2.</div><div style="min-height: 22.6px;">';
 		print += '<div class="collapse collapse-horizontal" id="collapseWidthExample'+i+"pregB"+'">';
 		print += '<div class="card card-body" style="text-align: center;"><div class="row">';
-		print += '<div class="col-5">'+preguntas[i].respuestas[1].respuestaDos+'</div><div class="col-2">---></div><div class="col-5">'+preguntas[i].respuestas[1].puntuacionDos+'</div>';
+		print += '<div class="col-5 col-5X">'+preguntas[i].respuestas[1].respuestaDos+'</div><div class="col-2">---></div><div class="col-5 col-5X">'+preguntas[i].respuestas[1].puntuacionDos+'</div>';
 		print += '</div></div></div></div></div>'
 		print += '<div class="col-2"><button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample'+i+"pregB"+'" aria-expanded="false" aria-controls="collapseWidthExample"><!--ICON EYE--><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16"><path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/><path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/></svg><!--ICON EYE--></button></div></div><hr>';
 
@@ -1124,7 +1127,7 @@ for (var i = 0; i < cantidadPreguntas; i++) {
 		print += '<div class="col-8"><div class="textoPregunta">Respuesta 3.</div><div style="min-height: 22.6px;">';
 		print += '<div class="collapse collapse-horizontal" id="collapseWidthExample'+i+"pregC"+'">';
 		print += '<div class="card card-body" style="text-align: center;"><div class="row">';
-		print += '<div class="col-5">'+preguntas[i].respuestas[2].respuestaTres+'</div><div class="col-2">---></div><div class="col-5">'+preguntas[i].respuestas[2].puntuacionTres+'</div>';
+		print += '<div class="col-5 col-5X">'+preguntas[i].respuestas[2].respuestaTres+'</div><div class="col-2">---></div><div class="col-5 col-5X">'+preguntas[i].respuestas[2].puntuacionTres+'</div>';
 		print += '</div></div></div></div></div>'
 		print += '<div class="col-2"><button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample'+i+"pregC"+'" aria-expanded="false" aria-controls="collapseWidthExample"><!--ICON EYE--><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16"><path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/><path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/></svg><!--ICON EYE--></button></div></div><hr>';
 
@@ -1136,7 +1139,7 @@ for (var i = 0; i < cantidadPreguntas; i++) {
 		print += '<div class="col-8"><div class="textoPregunta">Respuesta 4.</div><div style="min-height: 22.6px;">';
 		print += '<div class="collapse collapse-horizontal" id="collapseWidthExample'+i+"pregD"+'">';
 		print += '<div class="card card-body" style="text-align: center;"><div class="row">';
-		print += '<div class="col-5">'+preguntas[i].respuestas[3].respuestaCuatro+'</div><div class="col-2">---></div><div class="col-5">'+preguntas[i].respuestas[3].puntuacionCuatro+'</div>';
+		print += '<div class="col-5 col-5X">'+preguntas[i].respuestas[3].respuestaCuatro+'</div><div class="col-2">---></div><div class="col-5 col-5X">'+preguntas[i].respuestas[3].puntuacionCuatro+'</div>';
 		print += '</div></div></div></div></div>'
 		print += '<div class="col-2"><button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample'+i+"pregD"+'" aria-expanded="false" aria-controls="collapseWidthExample"><!--ICON EYE--><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16"><path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/><path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/></svg><!--ICON EYE--></button></div></div><hr>';
 
@@ -1148,7 +1151,7 @@ for (var i = 0; i < cantidadPreguntas; i++) {
 		print += '<div class="col-8"><div class="textoPregunta">Respuesta 5.</div><div style="min-height: 22.6px;">';
 		print += '<div class="collapse collapse-horizontal" id="collapseWidthExample'+i+"pregE"+'">';
 		print += '<div class="card card-body" style="text-align: center;"><div class="row">';
-		print += '<div class="col-5">'+preguntas[i].respuestas[4].respuestaCinco+'</div><div class="col-2">---></div><div class="col-5">'+preguntas[i].respuestas[4].puntuacionCinco+'</div>';
+		print += '<div class="col-5 col-5X">'+preguntas[i].respuestas[4].respuestaCinco+'</div><div class="col-2">---></div><div class="col-5 col-5X">'+preguntas[i].respuestas[4].puntuacionCinco+'</div>';
 		print += '</div></div></div></div></div>'
 		print += '<div class="col-2"><button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample'+i+"pregE"+'" aria-expanded="false" aria-controls="collapseWidthExample"><!--ICON EYE--><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16"><path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/><path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/></svg><!--ICON EYE--></button></div></div>';
 
@@ -1165,9 +1168,10 @@ for (var i = 0; i < cantidadPreguntas; i++) {
 		print += '</div>';
 
 }
+		print += '</div>';
 
 	//Imprime lista de preguntas en el Dom.
-	document.getElementById('list-btn-modal').innerHTML = print;
+	document.getElementById('mainIndex').innerHTML = print;
 
 }
 
