@@ -28,8 +28,8 @@ const preguntas = [
             {respuestaUno: "Manzana", puntuacionUno: 30},
             {respuestaDos: "Jitomate", puntuacionDos: 20},
             {respuestaTres: "Fresa", puntuacionTres: 13},
-            {respuestaCuatro: "Mole", puntuacionCuatro: 8},
-            {respuestaCinco: "Sandía", puntuacionCinco: 4}
+            {respuestaCuatro: "Sandía", puntuacionCuatro: 8},
+            {respuestaCinco: "Ciruela", puntuacionCinco: 4}
         ]
     },
     {
@@ -450,13 +450,13 @@ const preguntas = [
 		]
 	},
 	{
-	titulo : "Menciona especie usada en la cocina.",
+	titulo : "Menciona especia usada en la cocina.",
 	id: 41,
 	respuestas: [
 			{respuestaUno: "Sal", puntuacionUno: 31},
 			{respuestaDos: "Pimienta", puntuacionDos: 28},
-			{respuestaTres: "Clavo", puntuacionTres: 25},
-			{respuestaCuatro: "Ajo", puntuacionCuatro: 17},
+			{respuestaTres: "Ajo", puntuacionTres: 25},
+			{respuestaCuatro: "laurel", puntuacionCuatro: 17},
 			{respuestaCinco: "Orégano", puntuacionCinco: 13}		
 		]
 	},
@@ -479,7 +479,7 @@ const preguntas = [
 			{respuestaDos: "Que alto te ves", puntuacionDos: 32},
 			{respuestaTres: "Que delgado te ves", puntuacionTres:28},
 			{respuestaCuatro: "Que sexy te ves", puntuacionCuatro: 15},
-			{respuestaCinco: "Bien vestido te ves", puntuacionCinco: 12}		
+			{respuestaCinco: "me veo muy bien", puntuacionCinco: 12}		
 		]
 	},
 	{
@@ -994,7 +994,6 @@ function preComenzar(){
 
 	document.getElementById('mainIndex').innerHTML = printInt;
 }
-
  
 
 //Interfaz con respuestas.
@@ -1058,7 +1057,7 @@ for (var i = 0; i < cantidadPreguntas; i++) {
 		
 
 		if (preguntasVisibles == true){
-			print += '<label class="form-check-label stretched-link" for="firstCheckboxStretched'+i+'"> '+i+': '+preguntas[i].titulo+'</label>';
+			print += '<label class="form-check-label stretched-link" for="firstCheckboxStretched'+i+'"><strong>'+i+': </strong>'+preguntas[i].titulo+'</label>';
 		}else{
 		print += '<label class="form-check-label stretched-link" for="firstCheckboxStretched'+i+'"> <b>'+i+':.</b> <i>...Preguntas Ocultas...</i> </label>';
 		}
@@ -1074,7 +1073,12 @@ for (var i = 0; i < cantidadPreguntas; i++) {
 		print += '<div class="modal-header">';
 		print += '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>';
 		print += '</div>';
-		print += '<h1 class="modal-title fs-5" id="exampleModalLabel">'+preguntas[i].titulo+'</h1><hr>';
+
+		if (preguntasVisibles == true){
+			print += '<h1 class="modal-title fs-5" id="exampleModalLabel"><strong>'+i+': </strong>'+preguntas[i].titulo+'</h1>';
+		}else{
+			print += '<h1 class="modal-title fs-5" id="exampleModalLabel"><strong>'+i+': </strong><i>...Preguntas Ocultas...</i></h1>';
+		}
 		print += '<div class="modal-body">';
 
 
@@ -1083,17 +1087,18 @@ for (var i = 0; i < cantidadPreguntas; i++) {
 		//Contenido Modal ------------------------
 		print += '<div class="container-panel">';
 		print += '<div class="row familias">';
-		print += '<div class="col"><h2>'+familiaUno+'</h2><br><h2><div class="familiasCol" id="puntuacionFamUno'+i+'">0</div></h2>';
+		print += '<div class="col stylePunt"><h2>'+familiaUno+'</h2><h2><div class="familiasCol" id="puntuacionFamUno'+i+'">0</div></h2>';
 		print += '<hr><br><button class="button" onclick="incrementarFamUno()"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-trophy" viewBox="0 0 16 16"><path d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5c0 .538-.012 1.05-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33.076 33.076 0 0 1 2.5.5zm.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935zm10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935zM3.504 1c.007.517.026 1.006.056 1.469.13 2.028.457 3.546.87 4.667C5.294 9.48 6.484 10 7 10a.5.5 0 0 1 .5.5v2.61a1 1 0 0 1-.757.97l-1.426.356a.5.5 0 0 0-.179.085L4.5 15h7l-.638-.479a.501.501 0 0 0-.18-.085l-1.425-.356a1 1 0 0 1-.757-.97V10.5A.5.5 0 0 1 9 10c.516 0 1.706-.52 2.57-2.864.413-1.12.74-2.64.87-4.667.03-.463.049-.952.056-1.469H3.504z"/></svg></button><br><br>';
 		print += '</div>'
 		print += '<div class="col"><br><h5>PUNTUACIÓN POR RONDA</h5><h1><div class="textoPuntuacion" id="puntuacionPorRonda'+i+'">0</div></h1></div>';
-		print += '<div class="col"><h2>'+familiaDos+'</h2><br><h2><div class="familiasCol" id="puntuacionFamDos'+i+'">0</div></h2>';
+		print += '<div class="col stylePunt"><h2>'+familiaDos+'</h2><h2><div class="familiasCol" id="puntuacionFamDos'+i+'">0</div></h2>';
 		print += '<hr><br><button class="button" onclick="incrementarFamDos()"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-trophy" viewBox="0 0 16 16"><path d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5c0 .538-.012 1.05-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33.076 33.076 0 0 1 2.5.5zm.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935zm10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935zM3.504 1c.007.517.026 1.006.056 1.469.13 2.028.457 3.546.87 4.667C5.294 9.48 6.484 10 7 10a.5.5 0 0 1 .5.5v2.61a1 1 0 0 1-.757.97l-1.426.356a.5.5 0 0 0-.179.085L4.5 15h7l-.638-.479a.501.501 0 0 0-.18-.085l-1.425-.356a1 1 0 0 1-.757-.97V10.5A.5.5 0 0 1 9 10c.516 0 1.706-.52 2.57-2.864.413-1.12.74-2.64.87-4.667.03-.463.049-.952.056-1.469H3.504z"/></svg></button><br><br>';
 		print += '</div>'
 		print += '</div>';
 		print += '<div class="tabla-respuestas">';
 		print += '<h2>RESPUESTAS</H2>';
 		print += '<hr>';
+
 
 		//pizarra Respuesta 1
 
